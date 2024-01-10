@@ -1,0 +1,20 @@
+/* Heading ke liye we use '#' */
+#heading{
+    color: blue;
+    background-color: pink;
+}
+
+/* Classes ke liye we use '.' ki representation */
+.my-element{
+    color: white;
+    background-color: black;
+}
+
+.el{
+    color: purple;
+    background-color: cadetblue;
+}
+
+.el-2{
+    background-color: gold;
+}
