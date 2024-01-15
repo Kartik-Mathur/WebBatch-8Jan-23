@@ -1,0 +1,39 @@
+.user-details{
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.user-details-table{
+    width: 100%;
+    /* border: 1px solid red; */
+    height: 200px;
+}
+
+.user-details-info{
+    width: 45%;
+    height: 200px;
+    /* border: 1px solid black; */
+}
+
+.user-details-field{
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.user-details-input{
+    font-size: 20px;
+    width: 70%;
+    margin: 3px 0;
+}
+
+.user-fields-text{
+    float: left;
+    width: 20%;
+    
+}
+.user-fields-input{
+    float: right;
+    width: 79%;
+    /* border: 1px solid orchid; */
+}

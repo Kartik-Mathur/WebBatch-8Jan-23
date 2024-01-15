@@ -1,0 +1,44 @@
+/* .header-section{
+    border: 1px solid black;
+} */
+
+.header-section{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.header-section-table{
+    /* border: 2px solid red; */
+    width: 100%;
+}
+
+.cb-logo,
+.header-section-heading,
+.enquiry-info{
+    width: 30%;
+    /* border: 1px solid rebeccapurple; */
+}
+
+.cb-logo-img{
+    width: 50%;
+    /* border: 1px solid green; */
+    background-image: url('images/cblogo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+    height: 100px;
+}
+
+.header-section-heading,
+.enquiry-info{
+    font-size: 30px;
+}
+.header-section-heading{
+    text-decoration: underline;
+}
+
+.enquiry-checkbox input,
+.enquiry-enrolled input{
+    height: 20px;
+    width: 20px;
+}

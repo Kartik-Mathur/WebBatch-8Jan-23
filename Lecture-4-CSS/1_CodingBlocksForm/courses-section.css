@@ -1,0 +1,42 @@
+.course-choose-section{
+    width: 80%;
+    margin: 20px auto;
+
+    /* border: 1px solid black; */
+}
+
+.course-choose-heading{
+    font-size: 22px;
+}
+
+.choose-course-item-1,
+.choose-course-item-2{
+    width: 50%;
+    height: 200px;
+}
+
+.course-selection{
+    /* border: 1px solid black; */
+}
+
+.choose-course-item-1{
+    /* background-color: orange; */
+    float: left;
+}
+.choose-course-item-2{
+    /* background-color: blue; */
+    float: right;
+}
+
+.courses-checkbox{
+    height: 20px;
+    width: 20px;
+}
+
+.courses-name{
+    font-size: 22px;
+}
+
+.courses-name-container{
+    margin: 10px;
+}
