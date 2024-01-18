@@ -1,0 +1,42 @@
+.container{
+    display: grid;
+    width: 900px;
+    margin: auto;
+    border: 1px solid black;
+    font-size: 24px;
+    /* grid-template-columns: 300px 300px 300px; */
+    /* grid-template-columns: repeat(3,300px); */
+    grid-template-columns: repeat(3,1fr);
+    /* grid-template-rows: 100px 100px 100px 150px; */
+    grid-template-rows: repeat(3,100px) 150px;
+
+    grid-template-areas: 
+    "one one two"
+    "one one two"
+    "three four five"
+    "three four five";
+}
+
+.child{
+    border: 1px solid blue;
+}
+
+.child-1{
+    grid-area: one;
+}
+
+.child-2{
+    grid-area: two;
+}
+
+.child-3{
+    grid-area: three;
+}
+
+.child-4{
+    grid-area: four;
+}
+
+.child-5{
+    grid-area: five;
+}
