@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin:0;
+}
+
+.grandParent{
+    min-height: 600px;
+    padding: 50px;
+    border: 2px solid royalblue;
+    margin: 50px;
+}
+
+.parent{
+    border: 1px solid black;
+    min-height: 500px;
+    font-size: 30px;
+    margin: 20px;
+    position: relative;
+}
+
+.child{
+    border: 5px solid red;
+    width: 400px;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

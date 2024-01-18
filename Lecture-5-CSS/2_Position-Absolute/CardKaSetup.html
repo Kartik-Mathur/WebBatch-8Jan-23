@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            position: relative;
+            height: 300px;
+            width: 200px;
+            border: 5px solid black;
+            margin: auto;
+        }
+        .child-1,
+        .child-2{
+            position: absolute;
+        }
+        .child-1{
+            background-color: orange;
+            height: 300px;
+            width: 200px;
+            /* z-index: 1; */
+        }
+
+        .child-2{
+            background-color: green;
+            height: 300px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="parent">
+        <div class="child-1"></div>
+        <div class="child-2"></div>
+    </div>
+</body>
+</html>

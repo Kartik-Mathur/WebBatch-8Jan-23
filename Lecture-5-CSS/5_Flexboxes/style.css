@@ -1,0 +1,47 @@
+.container{
+    height: 1600px;
+    border: 5px solid black;
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: row-reverse; */
+}
+
+.child{
+    width: 300px;
+    height: 300px;
+    border: 2px solid royalblue;
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+    background-color: orange;
+}
+
+.child-14{
+    padding-top: 100px;
+}
+
+.child-15{
+    padding-top: 150px;
+}
+
+.child-11{
+    padding-top: 250px;
+}
+
+.child-10{
+    flex-grow: 2;
+}
+
+.child-15{
+    flex-grow: 3;
+}
+
+
+.child-14{
+    order: -1;
+}
+
+.child-1{
+    order: 1;
+}
