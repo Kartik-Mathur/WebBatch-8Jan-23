@@ -1,0 +1,17 @@
+.trending-articles{
+    margin-top: 100px;
+}
+.articles-list{
+    width: 100%;
+    border: 2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 0;
+}
+
+.article{
+    width: 30%;
+    border: 1px solid black;
+    height: 100px;
+}

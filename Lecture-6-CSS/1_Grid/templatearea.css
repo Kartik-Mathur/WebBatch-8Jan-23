@@ -5,7 +5,7 @@
     border: 1px solid black;
     font-size: 24px;
     /* grid-template-columns: 300px 300px 300px; */
-    /* grid-template-columns: repeat(3,300px); */
+    /* grid-template-columns: repeat(3,200px); */
     grid-template-columns: repeat(3,1fr);
     /* grid-template-rows: 100px 100px 100px 150px; */
     grid-template-rows: repeat(3,100px) 150px;

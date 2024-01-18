@@ -1,0 +1,91 @@
+#navbar{
+    height: 80px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    background-color: #FFC017;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.nav-logo{
+    width: 200px;
+    height: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links{
+    /* border: 1px solid orange; */
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-item{
+    /* border: 1px solid black; */
+    height: 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.nav-item:link{
+    color: black;
+}
+
+.nav-item:visited{
+    color: black;
+}
+
+.get-started{
+    height: 30px;
+    width: 90px;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    border: 0px;
+    position: relative;
+}
+
+.get-started:hover{
+    cursor: pointer;
+}
+
+.nav-image{
+    height: 50%;
+    width: 80%;
+    /* border: 1px solid black; */
+    background-image: url("https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 20% 0;
+}
+
+.circle-1,
+.circle-2{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: black;
+    top: 0;
+}
+
+.circle-1{
+    left: -15px;
+}
+.circle-2{
+    right: -15px;
+}
+
+.get-started span{
+    z-index: 1;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 100%;
+}

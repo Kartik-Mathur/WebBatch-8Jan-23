@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+            margin: auto;
+            position: relative;
+            background-color: black;
+        }
+
+        .container::before{
+            content: "";
+            height: 300px;
+            width: 300px;
+            display: block;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            left: -150px;
+        }
+        .container::after{
+            content: "";
+            height: 300px;
+            width: 300px;
+            display: block;
+            background-color: orange;
+            border-radius:25%;
+            position: absolute;
+            right: -150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+</html>
