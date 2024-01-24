@@ -3,7 +3,7 @@
 }
 .articles-list{
     width: 100%;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -12,6 +12,107 @@
 
 .article{
     width: 30%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 100px;
+}
+
+.trending-heading{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.trending-heading img{
+    height: 30px;
+    display: inline-block;
+}
+
+.trending-heading-text{
+    font-size: 18px;
+}
+
+.article{
+    display: flex;
+    gap: 10px;
+}
+
+.article-no,
+.article-detail{
+    /* border: 1px solid rgb(6, 29, 200); */
+}
+
+.article-detail{
+    flex-grow: 1;
+}
+
+.article-no{
+    color: rgba(204, 204, 204, 0.435);
+    font-size: 40px;
+}
+
+.article-detail-1{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* gap: 10px; */
+    margin-bottom: 5px;
+}
+
+.article-author-detail{
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.article-author-detail span{
+    font-weight: 500;
+}
+
+.article-detail-1 img{
+    height: 18px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.article-detail-2{
+    font-weight: 600;
+    margin-bottom: 5px;
+    height: 38px;
+    width: 100%;
+    /* border: 1px solid red; */
+    overflow: hidden;
+}
+
+.article-detail-3{
+    /* border: 1px solid red; */
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(104, 104, 104);
+}
+
+.article-read-time::after{
+    content: "✨";
+}
+
+.about-author{
+    border: 1px solid black;
+    position: absolute;
+    height: 150px;
+    width: 250px;
+    top: -80px;
+    right: -255px;
+    z-index: 1;
+    background-color: white;
+    display: none;
+}
+
+.author{
+    position: relative;
+}
+.author:hover{
+    cursor: pointer;
+}
+.author:hover .about-author{
+    display: block;
+    cursor: pointer;
 }
