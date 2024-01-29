@@ -1,0 +1,21 @@
+/* SETTING THE ELEMENTS ON THE PAGE TO APPLY ANIMATIONS */
+body{
+    background-image: url('../images/Space.png');
+    background-repeat: repeat-x;
+    background-color: rgb(77, 107, 145);
+}
+
+.rocket-element{
+    height: 200px;
+    position: absolute;
+    top: 450px;
+    left: 400px;
+    transform: rotateZ(45deg);
+}
+
+.cody{
+    height: 150px;
+    position: absolute;
+    top: 480px;
+    left: 280px;
+}

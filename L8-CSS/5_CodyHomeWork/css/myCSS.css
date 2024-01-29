@@ -1,0 +1,60 @@
+.talk{
+    font-size: 24px;
+    width: 200px;
+    background-color: white;
+    border: 1px solid black;
+    visibility: hidden;
+}
+
+.cody-talk{
+    position: absolute;
+    top: 380px;
+    left: 250px;
+}
+
+.rocket-talk{
+    position: absolute;
+    top: 400px;
+    left: 500px;
+}
+
+.talk-1{
+    animation-delay: 7s;
+    animation-name: showTalk;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+.talk-2{
+    animation-delay: 9s;
+    animation-name: showTalk;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+.talk-3{
+    animation-delay: 11s;
+    animation-name: showTalk;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+.talk-4{
+    animation-delay: 13s;
+    animation-name: showTalk;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes showTalk{
+    0%{
+        visibility: hidden;
+    }
+    50%{
+        visibility: visible;
+    }
+    100%{
+        visibility: hidden;
+    }
+
+}

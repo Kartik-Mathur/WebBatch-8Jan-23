@@ -1,0 +1,530 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background: url('./img/background.jpg');
+    height: 850px;
+    background-size: cover;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    animation: bgmove 10s cubic-bezier(0.075, 0.82, 0.165, 1) 10s,
+        1s backgroundShake 30s 5,
+        1s backgroundShake1 35s 5,
+        1s remove ease-in 40s;
+    animation-fill-mode: forwards;
+}
+
+.happyJanmashtami{
+    animation: wish 3s ease-in-out 41s forwards;
+}
+
+.happyJanmashtamiWish{
+    animation:  happyJanmashtamiWish 3s ease-in-out 41s forwards;
+}
+
+body{
+    animation: 1s bgColor 41s ease-in-out forwards;
+}
+
+.krishnaImg {
+    background: url('./img/krishna.png');
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    z-index: 2 !important;
+    background-size: cover;
+    top: 450px;
+    left: 500px;
+    animation: kanha 3s cubic-bezier(0.075, 0.82, 0.165, 1) 7s,
+        2s kanhaTied ease-in-out 20s,
+        2s kanhaRotate ease-in 28s;
+    animation-fill-mode: forwards;
+}
+
+.maa {
+    background: url('./img/Yashoda03.png');
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    background-size: cover;
+    top: 400px;
+    left: 150px;
+    animation: maa 3s cubic-bezier(0.075, 0.82, 0.165, 1) 7s,
+        5s maacatch ease-in-out 11s,
+        2s maa1 ease-in-out 20s,
+        2s maaHide ease-in 25s;
+    animation-fill-mode: forwards;
+}
+
+.conversation-1 {
+    position: absolute;
+    width: 400px;
+    top: 420px;
+    left: 550px;
+    visibility: hidden;
+    animation: talks 2s cubic-bezier(0.075, 0.82, 0.165, 1) 2s;
+}
+
+.conversation-2 {
+    position: absolute;
+    width: 400px;
+    top: 310px;
+    left: 200px;
+    visibility: hidden;
+    animation: talks 2s cubic-bezier(0.075, 0.82, 0.165, 1) 5s;
+}
+
+.conversation-3 {
+    position: absolute;
+    width: 400px;
+    top: 310px;
+    left: 170px;
+    visibility: hidden;
+    animation: talks3 2s cubic-bezier(0.075, 0.82, 0.165, 1) 8s;
+}
+
+.conversation-4 {
+    position: absolute;
+    width: 400px;
+    top: 320px;
+    left: 550px;
+    visibility: hidden;
+    animation: talks 2s cubic-bezier(0.075, 0.82, 0.165, 1) 9s;
+}
+
+.conversation-5 {
+    position: absolute;
+    width: 400px;
+    top: 380px;
+    left: 300px;
+    visibility: hidden;
+    animation: 2s talks4 cubic-bezier(0.075, 0.82, 0.165, 1) 22s;
+}
+
+.conversation-6 {
+    position: absolute;
+    width: 400px;
+    top: 380px;
+    left: 300px;
+    visibility: hidden;
+    animation: 2s talks5 cubic-bezier(0.075, 0.82, 0.165, 1) 24s;
+}
+
+
+.tree {
+    background: url('./img/tree.png');
+    width: 1300px;
+    height: 1800px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -20px;
+    left: 1500px;
+    z-index: 1;
+    animation: treemove 10s cubic-bezier(0.075, 0.82, 0.165, 1) 10s,
+        2s treeShake 37s ease-in;
+    animation-fill-mode: forwards;
+}
+
+.rope {
+    background: url('./img/rope.png');
+    visibility: hidden;
+    animation: ropeVisibility 2s ease-in-out 19s forwards,
+    1s ropeHide ease-in-out 38s;
+    animation-fill-mode: forwards;
+}
+
+
+.makhan {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 550px;
+    left: 2900px;
+    background: url('./img/handi.png');
+    background-size: contain;
+    animation: handi 10s ease-in 13s;
+    animation-fill-mode: forwards;
+}
+
+.objects {
+    position: relative;
+    animation: 5s objects ease-in-out 30s forwards;
+}
+
+.maa1 {
+    background: url('./img/krishna-ji.gif');
+    width: 300px;
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+@keyframes wish{
+    0%, 100%{
+        background: url('./img/makhan-eating.gif');
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        top: 300px;
+        left: 500px;
+        height: 500px;
+        width: 500px;
+    }
+}
+
+
+@keyframes treeShake {
+    0% {
+        transform: rotateZ(0deg);
+        top: 0;
+    }
+
+    100% {
+        transform: rotateZ(-90deg) rotateY(50deg);
+        top: -300px;
+    }
+}
+
+@keyframes ropeHide{
+    0%,100%{
+        visibility: hidden;
+    }
+}
+
+
+@keyframes bgColor{
+    0%, 100%{
+        background-image: url('./img/BACKGROND-BLUE.jpg');
+    }
+}
+
+@keyframes happyJanmashtamiWish{
+    0%,100%{
+        background-image: url('./img/HAPPY-janmashtami.png');
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        top: 300px;
+        left: 800px;
+        height: 900px;
+        width: 900px;
+    }
+}
+
+@keyframes remove{
+    0%{
+        
+    }
+    100%{
+       visibility: hidden;
+    }
+}
+
+
+@keyframes kanhaHide{
+    0%, 100%{
+        visibility: hidden;
+    }
+}
+
+@keyframes backgroundShake {
+    0% {
+        background-position-y: -2px;
+    }
+
+    100% {
+        background-position-y: 2px;
+    }
+}
+
+@keyframes backgroundShake1 {
+    0% {
+        background-position-y: -5px;
+    }
+
+    100% {
+        background-position-y: 5px;
+    }
+}
+
+@keyframes objects {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
+
+@keyframes handi {
+    10% {
+        left: 1912px;
+    }
+
+    90% {
+        left: 1911px;
+    }
+
+    100% {
+        left: 1910px;
+    }
+}
+
+@keyframes maacatch {
+    20% {
+        left: 250px;
+    }
+
+    40% {
+        left: 300px;
+    }
+
+    60% {
+        left: 350px;
+    }
+
+    80% {
+        left: 400px;
+    }
+
+    100% {
+        left: 430px;
+    }
+}
+
+@keyframes treemove {
+    100% {
+        left: 200px;
+    }
+}
+
+
+@keyframes bgmove {
+    100% {
+        background-position: -1300px 0;
+    }
+}
+
+@keyframes kanha {
+    30%, 100% {
+        background: url('./img/krishna-ji.gif') no-repeat;
+        background-size: contain;
+        transform: rotateY(180deg);
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@keyframes maa {
+    30%, 100% {
+        background: url('./img/maa.gif') no-repeat;
+        background-size: contain;
+        top: 450px;
+        left: 200px;
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@keyframes maa1 {
+    20% {
+        background: url('./img/angry.gif') no-repeat;
+        background-size: contain;
+        top: 450px;
+        left: 300px;
+        width: 320px;
+        height: 280px;
+    }
+
+    100% {
+        background: url('./img/angry.gif') no-repeat;
+        background-size: contain;
+        top: 450px;
+        left: 300px;
+        width: 320px;
+        height: 280px;
+    }
+}
+
+@keyframes kanha1 {
+    20% {
+        background: url('./img/krishna2.png') no-repeat;
+        background-size: contain;
+        top: 380px;
+        left: 450px;
+        width: 300px;
+        height: 250px;
+    }
+
+    100% {
+        background: url('./img/krishna2.png') no-repeat;
+        background-size: contain;
+        top: 380px;
+        left: 450px;
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@keyframes kanhaTied {
+    10% {
+        background: url('./img/Krishna-head.gif') no-repeat;
+        background-size: contain;
+        top: 400px;
+        left: 620px;
+        width: 350px;
+        height: 300px;
+    }
+
+    100% {
+        background: url('./img/Krishna-head.gif') no-repeat;
+        background-size: contain;
+        top: 400px;
+        left: 620px;
+        width: 350px;
+        height: 300px;
+    }
+}
+
+@keyframes kanhaRotate {
+    0%, 100% {
+        background: url('./img/Krishna-head.gif') no-repeat;
+        background-size: contain;
+        top: 400px;
+        left: 670px;
+        width: 350px;
+        height: 300px;
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes ropeVisibility {
+    0% {
+        visibility: visible;
+        position: absolute;
+        top: 220px;
+        z-index: 3;
+        left: 455px;
+        width: 750px;
+        height: 700px;
+    }
+
+    100% {
+        visibility: visible;
+        position: absolute;
+        background-size: contain;
+        top: 220px;
+        z-index: 3;
+        left: 455px;
+        width: 750px;
+        height: 700px;
+    }
+}
+
+@keyframes maaHide {
+    0% {}
+
+    100% {
+        visibility: hidden;
+    }
+}
+
+@keyframes rope {
+    0% {
+        background: url('./img/rope.png') no-repeat;
+        background-size: contain;
+        top: 400px;
+        left: 620px;
+        width: 350px;
+        height: 300px;
+    }
+
+    100% {
+        background: url('./img/rope.png') no-repeat;
+        background-size: contain;
+        top: 400px;
+        left: 620px;
+        width: 350px;
+        height: 300px;
+    }
+}
+
+@keyframes talks5 {
+    0% {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: hidden;
+
+    }
+}
+
+@keyframes talks4 {
+    0% {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: hidden;
+
+    }
+}
+
+@keyframes talks3 {
+    0% {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: hidden;
+
+    }
+}
+
+@keyframes talks2 {
+    0% {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: hidden;
+
+    }
+}
+
+@keyframes talks {
+    0% {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: hidden;
+
+    }
+}

@@ -1,0 +1,60 @@
+.loader{
+    width: 1200px;
+    height: 200px;
+    margin: 100px auto;
+    border: 4px solid black;
+    
+}
+
+.loading{
+    height: 100%;
+    width: 0%;
+    background-color: orange;
+    animation-name: update-loader-width;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    /* transition-duration: 3s; */
+    /* border: 5px solid red; */
+}
+
+
+/* .loader:hover .loading{
+    width: 100%;
+} */
+
+/* Animation: Aise create krte hai */
+/* @keyframes update-loader-width{
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+} */
+
+@keyframes update-loader-width{
+    0%{ /* 0 sec */
+        width: 0%;
+        background-color: red;
+    }
+    50%{ /* 2.5 secs */
+        width: 40%;
+        background-color: rgb(252, 96, 96);
+    }
+    70%{/* 3.5 sec */
+        width: 40%;
+    }
+    80%{ /*4 sec*/
+        width: 70%;
+        background-color: orange;
+    }
+    90%{
+        width: 30%;
+        background-color: rgb(255, 75, 75);
+    }
+    100%{ /* 5 sec */
+        width: 100%;
+        background-color: green;
+    }
+}
