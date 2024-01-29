@@ -1,0 +1,17 @@
+html{
+    font-size: 40px;
+}
+
+.parent{
+    font-size: 20px;
+}
+
+.child{
+    /* Jo bhi child ke andar ka current size hai usse 1.2 times ho jaao */
+    /* Child ka current font-size is 20px, after 1.2em it will what? 24px */
+    /* font-size: 1.2em; */
+    font-size: 24px;
+    /* font-size: 1.2rem; */
+    /* font-size: 48px; */
+}
+

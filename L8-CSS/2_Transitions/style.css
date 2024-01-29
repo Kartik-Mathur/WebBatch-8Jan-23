@@ -1,0 +1,26 @@
+*{
+    font-size: 40px;
+}
+
+.div{
+    width: 400px;
+    height: 500px;
+    background-color: rgb(255, 194, 52);
+    margin: 150px auto;
+    border: 5px solid black;
+    transition-duration: 2s;
+}
+
+.div:hover{
+    transform: rotateZ(180deg);
+    background-color: rgb(255, 222, 144);
+}
+/* 
+.div1{
+    width: 400px;
+    height: 500px;
+    background-color: rgb(103, 67, 0);
+    margin: 150px auto;
+    border: 5px solid black;
+    transform: rotateZ(55deg);
+} */

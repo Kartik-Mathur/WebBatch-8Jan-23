@@ -1,0 +1,24 @@
+/* COMBINATORS: Bhai Behn Ke Rishto par/ Baap Bete ke rishto par */
+
+/* 1. Direct Child > */
+/* ul ke andar jo bhi iska direct child hoga li */
+/* ul 
+    - li
+    - li
+    - ol   
+        - li */
+/* ul>li{
+    color: orange;
+} */
+
+/* 2. Immediate Sibling + */
+/* li+li{
+    color: blanchedalmond;
+} */
+
+
+/* 3. General Sibling ~ */
+li~li{
+    color: blueviolet;
+}
+

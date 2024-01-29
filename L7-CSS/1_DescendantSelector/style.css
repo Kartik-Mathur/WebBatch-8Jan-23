@@ -1,0 +1,14 @@
+/* Child Selector/Descendant Selector */
+.parent .child{
+    background-color: black;
+    color: white;
+}
+
+.parent .child span{
+    background-color: red;
+    color: yellow
+}
+
+span{
+    color: black;
+}

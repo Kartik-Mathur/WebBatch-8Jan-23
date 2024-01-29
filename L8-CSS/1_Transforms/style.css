@@ -1,0 +1,21 @@
+*{
+    font-size: 40px;
+}
+
+.div{
+    width: 400px;
+    height: 500px;
+    background-color: orange;
+    margin: 150px auto;
+    border: 5px solid black;
+    transform: skewX(30deg);
+}
+
+.div1{
+    width: 400px;
+    height: 500px;
+    background-color: rgb(103, 67, 0);
+    margin: 150px auto;
+    border: 5px solid black;
+    transform: skewY(50deg);
+}
