@@ -1,0 +1,40 @@
+body{
+    perspective: 1200px;
+}
+
+.card{
+    transform-style: preserve-3d;
+    border: 10px solid black;
+    /* background-color: royalblue; */
+    height: 600px;
+    width: 400px;
+    margin: auto;
+    position: relative;
+    transition-duration: 2s;
+}
+
+.face-a,
+.face-b{
+    width: 400px;
+    height: 600px;
+    position: absolute;
+}
+
+.face-a{
+    /* background-color: royalblue; */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBwWMFeJXHfXnbSBNrgj6eJnJUTRhla0IUbA&usqp=CAU');
+    z-index: 1;
+    backface-visibility: hidden;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+}
+
+.face-b{
+    background-color: orange;
+    font-size: 40px;
+    transform: rotateY(180deg);
+}
+
+.card:hover{
+    transform: rotateY(180deg);
+}

@@ -1,0 +1,18 @@
+body{
+    perspective: 1200px;
+}
+
+.div{
+    border: 5px solid black;
+    background-color: royalblue;
+    height: 600px;
+    width: 400px;
+    margin: auto;
+    transition-duration: 3s;
+
+}
+
+.div:hover{
+    transform: rotateY(180deg);
+}
+
