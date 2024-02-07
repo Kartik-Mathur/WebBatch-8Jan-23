@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* *{
+                margin: 0;
+                padding: 0;
+            } */
+        .meraContainer {
+            height: 1200px;
+            border: 5px solid black;
+        }
+
+        .meraCol {
+            /* height: 30px; */
+            font-size: 40px;
+            border: 2px solid red;
+        }
+
+        .meriRow {
+            border: 4px solid green;
+            height: 400px;
+        }
+
+        .item{
+            height: 50px;
+            width: 50px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container meraContainer mt-2">
+
+
+        <div class="row meriRow align-items-center">
+            <div class="col-12 align-self-start  col-md-6 col-lg-4 meraCol">Hello</div>
+            <div class="col-12 col-md-6 col-lg-4  meraCol">World</div>
+            <div class="col-12 col-md-6 col-lg-4 meraCol">Learning Cols</div>
+            <!-- <div class="col-12 col-md-6 col-lg-12  meraCol">Using Bootstrap</div> -->
+        </div>
+
+
+        <div class="meraElement d-flex">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+        </div>
+
+
+        <div class="element" style="border: 10px solid purple;">
+            <div class="el float-start float-lg-none w-50" style="border: 5px solid magenta; height: 60px;"></div>
+            <div class="el float-end  float-lg-none w-50" style="border: 5px solid orange; height: 60px"></div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="element" style="border: 10px solid purple;">
+            <div class="col float-start float-lg-none col-lg-12" style="border: 5px solid magenta; height: 60px;"></div>
+            <div class="col float-end  float-lg-none col-lg-12" style="border: 5px solid orange; height: 60px"></div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+
+    <!-- SCRIPT TAG KA CODE HOTA HAI ISSE BODY KE END MEI LIKHNA CHAHIYE -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
