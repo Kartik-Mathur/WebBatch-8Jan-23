@@ -1,0 +1,18 @@
+- cd: helps us to go inside or outside my current directory
+
+Directory
+- folder_name  
+    - another_folder
+
+# Assumming ki mei folder_name wale folder se bahar hoon
+> cd folder_name/another_folder
+
+# Agar parentDirectory mei jaana hai toh type krte hai
+> cd ..
+# Agar grandFather Directory mei jaana hai toh 
+> cd ../../
+# Agar parDada Directory mei jaana hai
+> cd ../../../
+
+
+- ls: List the current files in my current directory that is opened
