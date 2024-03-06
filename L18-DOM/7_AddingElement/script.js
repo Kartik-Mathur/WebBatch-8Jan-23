@@ -8,6 +8,7 @@ let movies = [
     "Thor",
     "Gadar"
 ];
+
 let i = 0;
 
 btn.addEventListener('click', () => {
