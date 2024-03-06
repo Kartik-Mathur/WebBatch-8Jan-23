@@ -21,9 +21,9 @@ let i = 0;
 
 btn.addEventListener('click', () => {
     if (i == movies.length) {
-        let url = imgLinks[Math.floor ((Math.random()*imgLinks.length))];
+        let url = imgLinks[Math.floor((Math.random() * imgLinks.length))];
         let img = document.createElement('img');
-        img.setAttribute('src',url);
+        img.setAttribute('src', url);
         movieList.appendChild(img);
         i++;
     }
