@@ -1,0 +1,20 @@
+button {
+    background-color: purple;
+    color: white;
+    font-size: 45px;
+    padding: 10px;
+    cursor: pointer;
+    border: 0px;
+}
+
+.movies{
+    font-size: 40px;
+    list-style: none;
+    font-weight: 800;
+}
+
+.movies li:nth-child(n){
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}

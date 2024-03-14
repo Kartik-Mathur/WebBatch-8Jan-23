@@ -3,25 +3,13 @@ const ul = document.querySelector('ul');
 
 function getData(url) {
     return new Promise((resolve, reject) => {
-        // 1. Create the XML Http Request Object
-        let xml = new XMLHttpRequest();
-
-        // 2. Setup krna request ko
-        // let url = 'https://cat-fact.herokuapp.com/facts';
-        xml.open('GET', url);
-
-        // 3. Success hone par request ke kya krna h?
-        xml.onload = (res) => {
-            let data = JSON.parse(res.target.response);
-            resolve(data); 
-        }
-
-        // 4. Faliure hone par request ke kya krna hai?
-        xml.onerror = (err) => {
-            reject(err);
-        }
-
-        xml.send(); // Request bhej do
+        fetch(url)
+            .then(res=>{
+                return res.json()
+            }).then(data=>{
+                resolve(data);
+            })
+            .catch(err=>reject(err));
     })
 }
 
