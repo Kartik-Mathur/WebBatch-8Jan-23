@@ -1,0 +1,12 @@
+1. To initialise the project using 
+  > npm init
+    - Will create package.json, that will 
+      include all the dependecies jinpar mera project depend krta hai
+2. Install krlo express package ko, kaise?
+  - go to express documentation 
+  - go to npm and search express
+  
+> npm i express
+- It will install entire code of express and on whatever packages the
+express is dependent on...
+
