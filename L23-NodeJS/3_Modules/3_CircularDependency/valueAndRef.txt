@@ -1,0 +1,24 @@
+let obj = {
+    a: 1,
+    b: 20
+}
+undefined
+let obj2 = obj
+undefined
+obj2.c = "Hello"
+'Hello'
+obj
+{a: 1, b: 20, c: 'Hello'}
+let obj3 = {
+    a: obj.a,
+    b: obj.b
+}
+undefined
+obj
+{a: 1, b: 20, c: 'Hello'}
+obj3
+{a: 1, b: 20}
+obj.a = 100
+100
+obj3
+{a: 1, b: 20}
