@@ -14,15 +14,23 @@
 
     <h1>Todo List</h1>
 
-    <form action="/addtask" method="GET">
-        <input class="inp" type="text" name="task" placeholder="Enter Task Here...">
-        <button class="btn" type="submit">Add Task</button>
-    </form>
+    <div class="container">
+        <form action="/addtask" method="GET">
+            <input class="inp" type="text" name="task" placeholder="Enter Task Here...">
+            <button class="btn" type="submit">Add Task</button>
+        </form>
 
-    <ul class="taskList">
-
-    </ul>
-
+        <ul class="taskList">
+            <!-- <li class="item">
+                <div class="content">Cricket</div>
+                <div class="btnGroup">
+                    <button class="btn-1 upBtn">↑</button>
+                    <button class="btn-1 downBtn">↓</button>
+                    <button class="btn-1 deleteBtn">❌</button>
+                </div>
+            </li> -->
+        </ul>
+    </div>
     <script src="/script.js"></script>
 </body>
 
