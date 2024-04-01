@@ -19,6 +19,7 @@ app.post('/todos',(req,res)=>{
     todos.unshift(newTask);
     res.redirect('/todos'); 
 })
+
 // 3. GET '/deletetask' : Delete  a task from todo list by name
     // name will come in query parameter
 app.get('/deletetask',(req,res)=>{
