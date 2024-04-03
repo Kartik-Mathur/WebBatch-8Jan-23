@@ -6,6 +6,7 @@ const PORT = 3000;
 
 app.use(express.static(path.join(__dirname,'public'))); // will send the index.html of the public folder(if present)
 app.use(express.urlencoded({extended:true})); 
+app.use(express.json());
 
 let todos = ["Cricket", "Dance", "Sing", "Hockey"];
 
@@ -17,7 +18,8 @@ app.get('/todos',(req,res)=>{
 // 2. POST '/todos': Add a newTask to todos array
 app.post('/todos',(req,res)=>{
     const {newTask} = req.body;
-    todos.unshift(newTask);
+    let indx = todos.indexOf(newTask);
+    if (indx == -1)  todos.unshift(newTask); // Prevents adding the duplicate tasks
     res.redirect('/todos'); 
 })
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        .taskItem{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Learning Post Request</h1>
+
+    <form action="/todos" method="POST">
+        <input type="text" name="newTask" placeholder="Enter Task Name">
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul class="taskList">
+        <!-- <li class="taskItem">
+            <div class="taskContent">Cricket</div>
+            <div class="btnGroups">
+                <button class="upBtn">↑</button>
+                <button class="downBtn">↓</button>
+                <button class="deleteBtn">❌</button>
+            </div>
+        </li> -->
+    </ul>
+
+
+    <script src="/script.js"></script>
+</body>
+</html>
