@@ -1,0 +1,6 @@
+<ul class="taskList">
+    {{!-- todos: ["Cricket", "Dance", "Sing", "Hockey"] --}}
+    {{#each todos as |t|}}
+        {{>tasklist_item t=t}}
+    {{/each}}
+</ul>

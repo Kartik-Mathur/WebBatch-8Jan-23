@@ -1,0 +1,9 @@
+MEDIUM CLONE:
+- Using templating engine
+- Front End + Backend
+- Use filehandling to store data of all the trending articles
+    - Also store the articles
+    - Whenever we click on an article, it should also show the,
+      detailed article page as well.
+
+- Create api documentation, for your reference.
