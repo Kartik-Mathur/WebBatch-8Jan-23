@@ -1,0 +1,19 @@
+- Install two things
+    - mongodb
+        Install mongodb.com -> products -> community edition
+        mongodb.com -> resources -> serverDocumentation
+
+        MAC: 
+            - Install homebrew: brew.sh 
+            - Follow Steps on 
+                https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
+        LINUX:
+            - Follow Steps on 
+                https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+    - mongosh: Mongo shell
+        WINDOWS:
+        - resources -> serverDocumentation -> mongosh
+        MAC/LINUX:
+        - Krpiya Google Karey
+        - Install mongoshell for Mac/Linux 
+            - https://www.mongodb.com/docs/mongodb-shell/install/

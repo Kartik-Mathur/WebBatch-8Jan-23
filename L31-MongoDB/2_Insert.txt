@@ -1,0 +1,41 @@
+Learning to use Insert Query
+To add data we have:
+1. Single document insert
+    - db.collectionName.insertOne({})
+
+Students: data
+let student = {
+    name: 'Rohini',
+    age: 18,
+    subject: 'Web Dev',
+    marks: 80
+}
+
+-  db.students.insertOne({
+ name: 'Rohini',
+ age: 18,
+ subject: 'Web Dev',
+ marks: 80
+});
+
+2. Multiple documents insert
+- db.students.insertMany([
+    {
+        name: 'Chandan',
+        age: 28,
+        subject: 'C++',
+        marks: 90
+    },
+    {
+        name: 'Himanshu',
+        age: 20,
+        subject: 'OS',
+        marks: 70
+    },
+    {
+        name: 'Harsh',
+        age: 22,
+        subject: 'CP',
+        marks: 90
+    }
+])

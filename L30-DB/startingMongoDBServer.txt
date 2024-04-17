@@ -1,0 +1,20 @@
+- Create a data folder where we want to store the data
+- Run the following command
+    > mongod --dbpath=data
+    No spaces before and after '=' in --dbpath=data
+
+    It will start the mongodb server inside the data folder,
+    ab jo bhi data store hoga vo hoga inside the data folder 
+
+Reference: https://www.mongodb.com/docs/manual/tutorial/manage-mongodb-processes/
+Or npm js docs: https://www.npmjs.com/package/mongodb
+
+To check server is running or not
+- In browser open: localhost:27017
+
+Message comes: It looks like you are trying to access MongoDB over HTTP on the native driver port.
+That means mongodb server is running perfectly fine.
+
+Then in new terminal, without closing the previous one
+- Run the following command
+    > mongosh

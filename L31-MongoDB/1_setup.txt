@@ -1,0 +1,29 @@
+- Start the mongoDB server
+    - Create data folder
+    - mongod --dbpath=data
+
+- To connect with mongoDB server we write 
+    > mongosh
+    This will connect you with mongoDB server, where we can type the queries for mongoDB.
+
+INSIDE MONGOSH Terminal
+    - show dbs; // To check the available databases 
+
+To create to new db 
+    - use db_name; // db_name hoga toh uspr switch kr lega, nahi hoga toh create kr dega
+
+To create a collection, inside a DATABASE (It's similar to what we have inside SQL: TABLE)
+    - db.createCollection("collection_name");
+    Example:
+    - db.createCollection('students'); // This will create the collection of students
+
+- Inside the collection we insert data, that we call "document"
+    - This is what we call as running queries on our collections.
+
+# Structure: 
+    - server    
+        - databases 
+            - collections
+                - documents
+
+To explore the above things: https://www.mongodb.com/docs/mongodb-shell/run-commands/
