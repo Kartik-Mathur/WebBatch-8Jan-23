@@ -43,6 +43,16 @@ app.get('/students',async (req, res) => {
     })
 })
 
+app.post('/update',async(req,res)=>{
+    const db = getDB();
+    let {name,age,marks} = req.body;
+    let students = db.collection('students');
+    let stu = await students.updateOne({name},{$set:{age,marks}});
+    res.send({
+        message:"Student Updated Successfully",
+        data:stu
+    })
+})
 
 mongoConnect()
     .then(() => {
