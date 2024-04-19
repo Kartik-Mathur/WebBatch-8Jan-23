@@ -1,1 +1,33 @@
 - db.students.find();
+
+Find has query operators
+# https://www.mongodb.com/docs/manual/reference/operator/query/#query-selectors
+
+1. Find the student/s has age = 22 and marks = 90
+2. Find the student/s has marks>=80 and age >20
+3. Find student/s those who have grade = 'A+'
+
+
+sol1: 
+db.students.find({
+    $and: [
+        {age: 22},
+        {marks: 90}
+    ]
+})
+
+Sol2: 
+db.students.find({
+    $and: [
+        {
+            age:{
+                $gt: 20 
+            }
+        },
+        {
+            marks: {
+                $gte: 80
+            }
+        }
+    ]
+})

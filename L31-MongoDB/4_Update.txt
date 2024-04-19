@@ -1,0 +1,27 @@
+#Task
+Update the subject of all students in the students collection to
+- Datascience 
+And Add a new information with all the documents inside the students
+- address as "Coding Blocks" 
+
+db.students.updateMany(
+    {},
+    {
+        $set:{
+            subject: "Datascience",
+            address:"Coding Blocks"
+        }
+    }
+)
+
+# GIVE "grade":"A+" to all those who have marks equals to 90.
+db.students.updateMany(
+    {
+        marks: 90
+    },
+    {
+        $set:{
+            grade: "A+"
+        }
+    }
+)
