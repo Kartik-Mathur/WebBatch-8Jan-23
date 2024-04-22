@@ -9,3 +9,18 @@ const addressSchema = new Schema({
 });
 
 module.exports = mongoose.model('address',addressSchema);
+
+// let addressDetails = [
+//     {
+//         details: "Noida, Coding Blocks"
+//     },
+//     {
+//         details: "Pitampura, Coding Blocks"
+//     },
+//     {
+//         details: "Lucknow, Coding Blocks"
+//     },
+//     {
+//         details: "Las vegas, Coding Blocks"
+//     }
+// ]

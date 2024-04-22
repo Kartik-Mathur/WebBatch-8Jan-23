@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const PORT = 4444;
 const mongoose = require('mongoose');
+const address = require('./models/address');
 const students = require('./models/students');
+
 
 app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: true }));
@@ -32,10 +34,15 @@ app.get('/students', async (req, res) => {
     let { limit, skip } = req.query;
     limit = +limit;
     skip = +skip;
-    let stu = await students.find({}).skip(skip).limit(limit);
-    res.send({
-        students: stu
-    })
+    let stu = await students.find({}).populate('address_id');
+    console.log(stu)
+        // .skip(skip)
+        // .limit(limit)
+        
+    
+    // res.send({
+    //     students: stu
+    // })
 })
 
 // app.post('/update', async (req, res) => {
