@@ -52,7 +52,8 @@ let newStudents = [];
 for(let i = 0 ; i < 35 ; i++){
     newStudents.push({
         name : names[Math.floor(Math.random()*6)],
-        rank: i
+        age: i,
+        marks: i*2+5
     })
 }
 console.log(newStudents);
