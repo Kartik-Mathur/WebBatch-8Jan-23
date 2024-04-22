@@ -16,13 +16,13 @@ let students = [
         age: 20,
         subject: 'OS',
         marks: 70,
-        a_id:ObjectId('66227fa4ace149be62f34a30')
+        a_id: ObjectId('66227fa4ace149be62f34a30')
     },
     {
         name: 'Harsh',
         age: 22,
         subject: 'CP',
         marks: 90,
-        a_id:ObjectId('66227fa4ace149be62f34a31')
+        a_id: ObjectId('66227fa4ace149be62f34a31')
     }
 ]
