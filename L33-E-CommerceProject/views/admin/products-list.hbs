@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products List</title>
+    <style>
+        .product-list {
+            display: flex;
+            justify-content:space-around;
+        }
+        .product-item{
+            border: 1px solid black;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 5px 10px 10px #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    {{>navbar}}
+
+    <h1>Welcome to the Admin Products List</h1>
+
+    <div class="product-list">
+        {{#each products as |p|}}
+        <div class="product-item">
+            <img src={{p.imageUrl}}> <br>
+            <h4>Product Name: {{p.name}}</h4>
+            <h4>Product Price: {{p.price}}</h4>
+            <button>🔍</button>
+            <button>🗑️</button>
+            <button>✏️</button>
+        </div>
+        {{/each}}
+    </div>
+</body>
+
+</html>

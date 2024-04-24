@@ -3,10 +3,18 @@ const express = require('express');
 const app = express();
 const PORT = 4444;
 const mongoose = require('mongoose');
+const hbs = require('hbs');
+
+// setting up the partials of HBS
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname,'')));
+
+app.get('/', (req, res, next) => {
+    res.render('index');
+})
 
 // Routes
 // /admin, /admin/abc, /admin/abc/def, /admin/abc/../../
