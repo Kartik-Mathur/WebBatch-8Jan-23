@@ -10,6 +10,10 @@
         .product-list {
             display: flex;
             justify-content: space-around;
+            border: 1px solid black;
+            padding: 10px;
+            width: 80%;
+            margin: auto;
         }
 
         .product-item {
@@ -17,6 +21,10 @@
             padding: 5px;
             border-radius: 5px;
             box-shadow: 5px 10px 10px #ccc;
+        }
+
+        .category {
+            width: 100%;
         }
     </style>
 
@@ -28,23 +36,29 @@
 
     <h1>Welcome to the Admin Products List</h1>
 
-    <div class="product-list">
-        {{#each products as |p|}}
-        <div class="product-item">
-            <div class="my-product-image">
-                <img src={{p.imageUrl}}>
+    <div class="category">
+        {{#each products as |category|}}
+        <div>{{@key}}</div>
+        <div class="product-list">
+            {{#each category as |p|}}
+            <div class="product-item">
+                <div class="my-product-image">
+                    <img src={{p.imageUrl}}>
+                </div>
+                <br>
+                <h4>Product Name: {{p.name}}</h4>
+                <h4>Product Price: {{p.price}}</h4>
+                <div class="button-group">
+                    <a href="/admin/products/update/{{p._id}}">
+                        <button>✏️</button>
+                    </a>
+                    <a href="/admin/products/delete/{{p._id}}">
+                        <button>🗑️</button>
+                    </a>
+                </div>
             </div>
-            <br>
-            <h4>Product Name: {{p.name}}</h4>
-            <h4>Product Price: {{p.price}}</h4>
-            <div class="button-group">
-                <a href="/admin/products/update/{{p._id}}">
-                    <button>✏️</button>
-                </a>
-                <a href="/admin/products/delete/{{p._id}}">
-                    <button>🗑️</button>
-                </a>
-            </div>
+
+            {{/each}}
         </div>
         {{/each}}
     </div>

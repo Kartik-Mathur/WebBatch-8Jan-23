@@ -23,10 +23,17 @@ module.exports.postProductsAdd = async (req, res, next) => {
 
 module.exports.getProductsAll = async (req, res, next) => {
     const products = await Products.find();
-    console.log(products)
-    // res.send(products);
+    console.log(products);
+    let data = {};
+    
+    products.forEach(product => {
+        let arr = data[product.category] || [];
+        arr.push(product);
+        data[product.category] = arr;
+    });
+    // res.send(data);
     res.render('admin/products-list', {
-        products
+        products:data
     });
 }
 
@@ -69,9 +76,9 @@ module.exports.postProductUpdate = async (req, res, next) => {
 
 module.exports.getDeleteProductById = async (req, res, next) => {
     const { id } = req.params;
-    
+
     try {
-        let p = await Products.deleteOne({_id: id});
+        let p = await Products.deleteOne({ _id: id });
         res.redirect('/admin/products/all');
     }
     catch (err) {
