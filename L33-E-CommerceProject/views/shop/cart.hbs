@@ -36,7 +36,7 @@
     {{>navbar}}
 
     <h1>Welcome to cart page</h1>
-    Total Price: {{totalPrice}}
+    Total Price: <span class="totalPrice">{{totalPrice}}</span>
     <ul class="cart-list">
         {{#each cart as |c|}}
         <li class="cart-list-item">
@@ -67,6 +67,7 @@
         {{/each}}
     </ul>
 
+    <script src="/js/utils/axios.min.js"></script>
     <script src="/js/cart.js"></script>
 </body>
 

@@ -86,3 +86,62 @@ module.exports.getCart = async (req, res, next) => {
         next(err);
     }
 }
+
+
+module.exports.getIncrease = async (req, res, next) => {
+    const { id } = req.params;
+    let cart = req.user.cart;
+    let indx;
+    cart.forEach((item, i) => {
+        if (item.id == id) {
+            indx = i;
+        }
+    })
+
+    cart[indx].quantity++;
+    req.user.save();
+    try {
+        let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
+        let totalPrice = 0;
+        user.cart.forEach((item)=>{
+            totalPrice += item.id.price*item.quantity;
+        })
+        res.send({
+            id:user.cart,
+            totalPrice
+        });
+    } catch (err) {
+        next(err);
+    }
+
+}
+
+
+module.exports.getDecrease = async (req, res, next) => {
+    const { id } = req.params;
+    let cart = req.user.cart;
+    let indx;
+    cart.forEach((item, i) => {
+        if (item.id == id) {
+            indx = i;
+        }
+    })
+    if(cart[indx].quantity>1)
+        cart[indx].quantity--;
+    else if(cart[indx].quantity==1)
+        cart.splice(indx,1);
+    req.user.save();
+    try {
+        let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
+        let totalPrice = 0;
+        user.cart.forEach((item)=>{
+            totalPrice += item.id.price*item.quantity;
+        })
+        res.send({
+            id:user.cart,
+            totalPrice
+        });
+    } catch (err) {
+        next(err);
+    }
+}
