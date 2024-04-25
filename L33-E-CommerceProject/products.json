@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Shirt",
+      "price": 2000,
+      "imageUrl": "https://m.media-amazon.com/images/I/81ZUL5rCfmL._AC_UY1100_.jpg",
+      "description": "This is a shirt",
+      "seller": "Denim",
+      "category": "fashion"
+    },
+    {
+      "name": "Jeans",
+      "price": 2000,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS5QUB3eRluzY3SZxdSDZFA3rjsINvARNmRw&s",
+      "description": "This is a Jeans",
+      "seller": "Denim",
+      "category": "fashion"
+    },
+    {
+      "name": "Shoes",
+      "price": 2000,
+      "imageUrl": "https://rukminim2.flixcart.com/image/450/500/xif0q/shoe/7/z/r/8-white-leaf-8-urbanbox-white-black-original-imagvgf4cuzs2hrw.jpeg?q=90&crop=false",
+      "description": "This is a Shoe",
+      "seller": "Denim",
+      "category": "fashion"
+    }
+  ]
