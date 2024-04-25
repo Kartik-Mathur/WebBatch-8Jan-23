@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    {{>generalcss}}
+
+    <style>
+        .cart-list {
+            width: 800px;
+            margin: auto;
+            list-style: none;
+
+        }
+
+        .cart-list-item {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    {{>navbar}}
+
+    <h1>Welcome to cart page</h1>
+    Total Price: {{totalPrice}}
+    <ul class="cart-list">
+        {{#each cart as |c|}}
+        <li class="cart-list-item">
+            <div>
+                <img src={{c.id.imageUrl}} alt="" width="100px" height="100px">
+            </div>
+            <div>
+                <p>Name: {{c.id.name}}</p>
+                <p>Price: {{c.id.price}}</p>
+
+                <p>Quantity: <button>+</button>{{c.quantity}} <button>-</button> </p>
+            </div>
+
+        </li>
+        {{/each}}
+    </ul>
+</body>
+
+</html>

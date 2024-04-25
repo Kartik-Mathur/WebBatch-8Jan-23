@@ -4,6 +4,15 @@ const app = express();
 const PORT = 4444;
 const mongoose = require('mongoose');
 const hbs = require('hbs');
+const User = require('./models/user');
+
+app.use(async (req,res,next)=>{
+    let user = await User.findOne({
+        _id: "662a79a13f4df07dddc9667d"
+    });
+    req.user = user;
+    next();
+})
 
 // setting up the partials of HBS
 hbs.registerPartials(__dirname + '/views/partials');
