@@ -20,6 +20,14 @@
             display: flex;
             align-items: center;
         }
+
+        .increaseQuantity a:link,
+        .increaseQuantity a:visited,
+        .decreaseQuantity a:visited,
+        .decreaseQuantity a:link {
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
 
@@ -39,12 +47,27 @@
                 <p>Name: {{c.id.name}}</p>
                 <p>Price: {{c.id.price}}</p>
 
-                <p>Quantity: <button>+</button>{{c.quantity}} <button>-</button> </p>
+                <div>
+                    Quantity:
+                    <a href="/shop/cart/increase/{{c.id._id}}">
+                        <button class="increaseQuantity">
+                            +
+                        </button>
+                    </a>{{c.quantity}}
+                    <a href="/shop/cart/decrease/{{c.id._id}}">
+                        <button class="decreaseQuantity">
+                            -
+                        </button>
+                    </a>
+                    <div id={{c.id._id}}></div>
+                </div>
             </div>
 
         </li>
         {{/each}}
     </ul>
+
+    <script src="/js/cart.js"></script>
 </body>
 
 </html>

@@ -20,9 +20,8 @@ module.exports.getProductsById = async (req, res, next) => {
             product: product
         })
 
-
     } catch (err) {
-
+        next(err);
     }
 }
 
@@ -72,14 +71,14 @@ module.exports.getAddToCartById = async (req, res, next) => {
 module.exports.getCart = async (req, res, next) => {
     try {
         const { id } = req.params;
-        let user = await Users.findOne({_id: req.user._id}).populate('cart.id');
-        
+        let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
+
         console.log(user.cart);
         let totalPrice = 0;
-        user.cart.forEach((item)=>{
-            totalPrice += item.id.price*item.quantity;
+        user.cart.forEach((item) => {
+            totalPrice += item.id.price * item.quantity;
         })
-        res.render('shop/cart',{
+        res.render('shop/cart', {
             cart: user.cart,
             totalPrice
         });
