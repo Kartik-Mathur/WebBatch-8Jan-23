@@ -1,7 +1,9 @@
 const Products = require('../models/products');
 
 module.exports.getAdminHome = (req, res, next) => {
-    res.render('admin/home');
+    res.render('admin/home', {
+        isAdmin: true
+    });
 }
 
 module.exports.postProductsAdd = async (req, res, next) => {
@@ -14,7 +16,9 @@ module.exports.postProductsAdd = async (req, res, next) => {
             imageUrl,
             seller
         });
-        res.redirect('/admin/products/all');
+        res.redirect('/admin/products/all', {
+            isAdmin: true
+        });
     }
     catch (err) {
         res.send(err)
@@ -25,7 +29,7 @@ module.exports.getProductsAll = async (req, res, next) => {
     const products = await Products.find();
     console.log(products);
     let data = {};
-    
+
     products.forEach(product => {
         let arr = data[product.category] || [];
         arr.push(product);
@@ -33,12 +37,15 @@ module.exports.getProductsAll = async (req, res, next) => {
     });
     // res.send(data);
     res.render('admin/products-list', {
-        products:data
+        products: data,
+        isAdmin: true
     });
 }
 
 module.exports.getProductsAdd = (req, res, next) => {
-    res.render('admin/add-product');
+    res.render('admin/add-product', {
+        isAdmin: true
+    });
 }
 
 module.exports.getProductsUpdate = async (req, res, next) => {
@@ -46,7 +53,8 @@ module.exports.getProductsUpdate = async (req, res, next) => {
     try {
         const product = await Products.findById(id);
         res.render('admin/update-product', {
-            product
+            product,
+            isAdmin: true
         });
     }
     catch (err) {
@@ -67,7 +75,9 @@ module.exports.postProductUpdate = async (req, res, next) => {
         p.seller = seller;
         await p.save();
 
-        res.redirect('/admin/products/all');
+        res.redirect('/admin/products/all', {
+            isAdmin: true
+        });
     }
     catch (err) {
         res.send(err)
@@ -79,7 +89,9 @@ module.exports.getDeleteProductById = async (req, res, next) => {
 
     try {
         let p = await Products.deleteOne({ _id: id });
-        res.redirect('/admin/products/all');
+        res.redirect('/admin/products/all', {
+            isAdmin: true
+        });
     }
     catch (err) {
         res.send(err)
