@@ -28,6 +28,17 @@
             text-decoration: none;
             color: black;
         }
+
+        .buyNowBtn {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #000;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -66,6 +77,13 @@
         </li>
         {{/each}}
     </ul>
+
+    <a href="/shop/cart/buy">
+        <button class="buyNowBtn">
+            Buy Now
+        </button>
+    </a>
+
 
     <script src="/js/utils/axios.min.js"></script>
     <script src="/js/cart.js"></script>

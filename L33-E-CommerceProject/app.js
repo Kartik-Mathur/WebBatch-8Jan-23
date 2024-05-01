@@ -8,7 +8,7 @@ const User = require('./models/user');
 
 app.use(async (req,res,next)=>{
     let user = await User.findOne({
-        _id: "662a79a13f4df07dddc9667d"
+        _id: "663259d7561a8ed3c6c28c9c"
     });
     req.user = user;
     next();
@@ -21,9 +21,8 @@ app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res, next) => {
-    res.render('index');
-})
+const homeRouter = require('./routes/home');
+app.get('/', homeRouter);
 
 // Routes
 // /admin, /admin/abc, /admin/abc/def, /admin/abc/../../

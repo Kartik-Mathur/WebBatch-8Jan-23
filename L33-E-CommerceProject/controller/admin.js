@@ -75,9 +75,7 @@ module.exports.postProductUpdate = async (req, res, next) => {
         p.seller = seller;
         await p.save();
 
-        res.redirect('/admin/products/all', {
-            isAdmin: true
-        });
+        res.redirect('/admin/products/all');
     }
     catch (err) {
         res.send(err)

@@ -103,11 +103,11 @@ module.exports.getIncrease = async (req, res, next) => {
     try {
         let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
         let totalPrice = 0;
-        user.cart.forEach((item)=>{
-            totalPrice += item.id.price*item.quantity;
+        user.cart.forEach((item) => {
+            totalPrice += item.id.price * item.quantity;
         })
         res.send({
-            id:user.cart,
+            id: user.cart,
             totalPrice
         });
     } catch (err) {
@@ -126,22 +126,63 @@ module.exports.getDecrease = async (req, res, next) => {
             indx = i;
         }
     })
-    if(cart[indx].quantity>1)
+    if (cart[indx].quantity > 1)
         cart[indx].quantity--;
-    else if(cart[indx].quantity==1)
-        cart.splice(indx,1);
+    else if (cart[indx].quantity == 1)
+        cart.splice(indx, 1);
     req.user.save();
     try {
         let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
         let totalPrice = 0;
-        user.cart.forEach((item)=>{
-            totalPrice += item.id.price*item.quantity;
+        user.cart.forEach((item) => {
+            totalPrice += item.id.price * item.quantity;
         })
         res.send({
-            id:user.cart,
+            id: user.cart,
             totalPrice
         });
     } catch (err) {
         next(err);
+    }
+}
+
+
+module.exports.getCartBuy = async (req, res, next) => {
+    try {
+        let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
+        let cart = user.cart;
+
+        console.log("CART ", cart);
+        let newOrder = [];
+        cart.forEach(item => {
+            let order = {};
+            order.product = item.id;
+            order.quantity = item.quantity;
+            order.price = order.product.price * order.quantity;
+            newOrder.push(order);
+        })
+        console.log(newOrder);
+        await Users.findByIdAndUpdate(req.user._id, {
+            orders: newOrder,
+            cart: []
+        })
+        res.send({
+            message: "Order placed successfully",
+            newOrder
+        })
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+
+
+module.exports.getOrderHistory = (req, res, next) => {
+    try {
+        let orders = req.user.orders;
+        res.send(orders);
+    } catch (err) {
+
     }
 }

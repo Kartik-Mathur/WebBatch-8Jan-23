@@ -13,6 +13,8 @@ router.get('/cart', shopController.getCart);
 router.get('/cart/add/:id', shopController.getAddToCartById);
 router.get('/cart/increase/:id', shopController.getIncrease);
 router.get('/cart/decrease/:id', shopController.getDecrease);
+router.get('/cart/buy', shopController.getCartBuy);
+router.get('/order/history', shopController.getOrderHistory);
 
 
 module.exports = router;

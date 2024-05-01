@@ -19,6 +19,17 @@ const userSchema = new Schema({
             ref:"products"
         },
         quantity: Number
+    }],
+    orders:[{
+        products:[{
+            product: {},
+            quantity: Number,
+            price:Number
+        }],
+        date: {
+            type: Date,
+            default: Date.now 
+        }
     }]
 })
 
@@ -29,18 +40,21 @@ let users = [
         "name": "Pratik",
         "email":"pratik@gmail.com",
         "password": "123456",
-        "cart": []
+        "cart": [],
+        "orders": []
     },
     {
         "name": "Dhairya",
         "email":"dhairya@gmail.com",
         "password": "654321",
-        "cart": []
+        "cart": [],
+        "orders": []
     },
     {
         "name": "Raman",
         "email":"raman@gmail.com",
         "password": "abc@gmail",
-        "cart": []
+        "cart": [],
+        "orders": []
     },
 ]
