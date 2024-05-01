@@ -152,23 +152,30 @@ module.exports.getCartBuy = async (req, res, next) => {
         let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
         let cart = user.cart;
 
-        console.log("CART ", cart);
-        let newOrder = [];
-        cart.forEach(item => {
+        let myOrder = req.user.orders;
+        console.log(myOrder);
+        
+        console.log("Before",myOrder);
+        let newOrder = cart.map(item => {    
             let order = {};
             order.product = item.id;
             order.quantity = item.quantity;
             order.price = order.product.price * order.quantity;
-            newOrder.push(order);
+            return order;
         })
-        console.log(newOrder);
-        await Users.findByIdAndUpdate(req.user._id, {
-            orders: newOrder,
-            cart: []
-        })
+        console.log("NEW ORDER",newOrder);
+        myOrder.push(newOrder);
+        // console.log(myOrder[0]);
+        // await Users.updateOne({
+        //     _id: req.user._id
+        // }, {
+        //     orders: newOrder,
+        //     cart: []
+        // })
+        // console.log(req.user.orders);
         res.send({
             message: "Order placed successfully",
-            newOrder
+            myOrder
         })
     } catch (err) {
         next(err);

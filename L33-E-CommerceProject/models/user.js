@@ -21,15 +21,9 @@ const userSchema = new Schema({
         quantity: Number
     }],
     orders:[{
-        products:[{
-            product: {},
-            quantity: Number,
-            price:Number
-        }],
-        date: {
-            type: Date,
-            default: Date.now 
-        }
+        product: {},
+        quantity: Number,
+        price:Number
     }]
 })
 
