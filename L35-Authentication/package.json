@@ -1,5 +1,5 @@
 {
-  "name": "l34-cookiesandsessions",
+  "name": "l35-authentication",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cookies": "^0.9.1",
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
     "express": "^4.19.2",
-    "express-session": "^1.18.0"
+    "express-session": "^1.18.0",
+    "hbs": "^4.2.0",
+    "mongoose": "^8.3.3"
   }
 }
