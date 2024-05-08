@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+</head>
+
+<body>
+    {{msg}}
+    <h1>Welcome to signup page</h1>
+    <form action="/signup" method="post">
+        <input type="text" name="username" placeholder="Enter username"><br>
+        <input type="password" name="password" placeholder="Enter password"><br>
+        <button type="submit">Signup</button>
+    </form>
+
+    <h4>Existing User? Login</h4>
+    <a href="/login">Login</a>
+
+</body>
+
+</html>
