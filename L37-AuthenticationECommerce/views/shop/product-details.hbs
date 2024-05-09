@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+
+    {{>generalcss}}
+</head>
+
+<body>
+
+    {{>navbar}}
+    <h1>Welcome to CB Shop</h1>
+
+    <div class="product-item">
+        <div class="my-product-image">
+            <img src={{product.imageUrl}}>
+        </div>
+        <br>
+        <h4>Product Name: {{product.name}}</h4>
+        <h4>Product Price: {{product.price}}</h4>
+        <h4>Product Seller: {{product.seller}}</h4>
+        <h4>Product Description: {{product.description}}</h4>
+        <h4>Reviews:</h4>
+        <ul>
+            {{#each product.review as |r|}}
+            <li>{{r}}</li>
+            {{/each}}
+        </ul>
+    </div>
+
+    <a href="/shop/cart/add/{{product._id}}">
+        <button>Add To Cart</button>
+    </a>
+    <a href="#">
+        <button>Buy Now</button>
+    </a>
+</body>
+
+</html>

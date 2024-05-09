@@ -1,0 +1,12 @@
+.button-group{
+    display: flex;
+    justify-content: space-around;
+}
+
+.my-product-image{
+    max-width: 200px;
+}
+
+.my-product-image img{
+    width: 100%;
+}

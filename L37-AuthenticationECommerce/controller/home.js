@@ -1,17 +1,34 @@
-const Users = require('../models/users');
+const Products = require('../models/products');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const Users = require('../models/user');
 
-module.exports.getLogin = (req, res, next) => {
+module.exports.getLogin = (req,res,next)=>{
+    if(req.isAuthenticated())return res.redirect('/profile');
     res.render('login');
 }
 
-module.exports.getSignup = (req, res, next) => {
-    res.render('signup');
+module.exports.getHome= async(req, res, next) => {
+    
+    if(!req.isAuthenticated()) return res.redirect('/login');
+    
+    try{
+        let products = await Products.find();
+        const {getProductsCategoryWise} = require('../utils/library')
+        products = getProductsCategoryWise(products);
+        res.render('index',{
+            products
+        });
+    }
+    catch(err){
+        next(err);
+    }
+    
 }
 
-module.exports.getHome = (req, res, next) => {
-    res.render('home');
+module.exports.getSignup = (req,res,next)=>{
+    if(req.isAuthenticated())return res.redirect('/profile');
+    res.render('signup')
 }
 
 module.exports.postSignup = async (req, res, next) => {
@@ -39,14 +56,5 @@ module.exports.postSignup = async (req, res, next) => {
 
     } catch (err) {
         next(err);
-    }
-}
-
-module.exports.getProfile = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        // req.user gives us the user in passportJS
-        res.render('profile', { user: req.user });
-    } else {
-        res.redirect('/login');
     }
 }

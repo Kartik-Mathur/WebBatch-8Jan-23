@@ -3,11 +3,13 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
     username: {
-        type: String,
-        required:true,
-        unique: true
+        type: String, // Incase of google this is displayName
+        required:true
     },
-    password: String
+    password: String,
+    googleImg: String,
+    googleAccessToken: String,
+    googleId: String
 });
 
 module.exports = mongoose.model('Users',userSchema);

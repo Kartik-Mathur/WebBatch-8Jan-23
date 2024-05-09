@@ -1,11 +1,11 @@
 {
-  "name": "l36-authenticationpassportjs",
+  "name": "l33-e-commerceproject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js -e hbs,js,mjs,cjs,json"
+    "start": "nodemon app.js -e js,mjs,cjs,json,hbs"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,6 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "hbs": "^4.2.0",
-    "mongoose": "^8.3.4",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0"

@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>My Profile</title>
 </head>
 <body>
+    
 
-    <h1>Already a user?</h1> <a href="/login">Login!</a> <br><br>
-    <h1>New user?</h1> <a href="/signup">Signup!</a> <br>
-<h1>Login Via Google</h1>
-    <a href="/auth/google">Login via google</a>
+    <h1>Welcome to the profile page</h1>
+
+    Username : {{user.username}} <br><br>
+    Password : {{user.password}} <br><br>
+
+    <a href="/logout">Logout</a>
 </body>
 </html>

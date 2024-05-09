@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products List</title>
+    <style>
+        .product-list {
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid black;
+            padding: 10px;
+            width: 80%;
+            margin: auto;
+        }
+
+        .product-item {
+            border: 1px solid black;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 5px 10px 10px #ccc;
+        }
+
+        .category {
+            width: 100%;
+        }
+    </style>
+
+    {{> generalcss}}
+</head>
+
+<body>
+    {{>navbar}}
+
+    <h1>Welcome to the Admin Products List</h1>
+
+    {{>category_list products=products isAdmin=isAdmin}}
+    
+</body>
+
+</html>
