@@ -6,7 +6,7 @@ const shopController = require('../controller/shop');
 const { route } = require('./admin');
 router.get('/', shopController.getHome);
 
-router.get('/products/all', shopController.getProductsAll);
+// router.get('/products/all', shopController.getProductsAll);
 router.get('/products/:id', shopController.getProductsById);
 
 router.get('/cart', shopController.getCart);

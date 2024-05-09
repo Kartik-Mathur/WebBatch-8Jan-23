@@ -1,23 +1,26 @@
+const { isAdmin } = require('../middlewares/isAdmin');
 const Products = require('../models/products');
 const Users = require('../models/user');
 
-module.exports.getProductsAll = async (req, res, next) => {
-    try {
-        let products = await Products.find({});
-        const { getProductsCategoryWise } = require('../utils/library');
-        let categoryProducts = getProductsCategoryWise(products);
+// module.exports.getProductsAll = async (req, res, next) => {
+//     try {
+//         let products = await Products.find({});
+//         const { getProductsCategoryWise } = require('../utils/library');
+//         let categoryProducts = getProductsCategoryWise(products);
 
-    } catch (err) {
+//     } catch (err) {
 
-    }
-}
+//     }
+// }
 
 module.exports.getProductsById = async (req, res, next) => {
     try {
         const { id } = req.params;
         let product = await Products.findOne({ _id: id });
         res.render('shop/product-details', {
-            product: product
+            product: product,
+            isLoggedIn: true,
+            isAdmin: (req.user.role == 'admin') ? true: false
         })
 
     } catch (err) {
@@ -33,6 +36,8 @@ module.exports.getHome = async (req, res, next) => {
 
         res.render('shop/home', {
             products: categoryProducts,
+            isLoggedIn: true,
+            isAdmin: (req.user.role == 'admin') ? true: false
         })
     } catch (err) {
 
@@ -80,7 +85,9 @@ module.exports.getCart = async (req, res, next) => {
         })
         res.render('shop/cart', {
             cart: user.cart,
-            totalPrice
+            totalPrice,
+            isLoggedIn: true,
+            isAdmin: (req.user.role == 'admin') ? true: false
         });
     } catch (err) {
         next(err);
@@ -109,7 +116,8 @@ module.exports.getIncrease = async (req, res, next) => {
         })
         res.send({
             id: user.cart,
-            totalPrice
+            totalPrice,
+            isAdmin: (req.user.role == 'admin') ? true: false
         });
     } catch (err) {
         next(err);
@@ -143,7 +151,8 @@ module.exports.getDecrease = async (req, res, next) => {
         })
         res.send({
             id: user.cart,
-            totalPrice
+            totalPrice,
+            isAdmin: (req.user.role == 'admin') ? true: false
         });
     } catch (err) {
         next(err);

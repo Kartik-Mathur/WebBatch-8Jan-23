@@ -1,7 +1,14 @@
 <nav>
     <a href="/">Home</a>
+    {{#if isAdmin}}
     <a href="/admin">Admin</a>
+    {{/if}}
     <a href="/shop">Shop</a>
     <a href="/shop/cart">Cart</a>
     <a href="/shop/order/history">Orders</a>
+    {{#if isLoggedIn}}
+    <a href="/logout">Logout</a>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
 </nav>

@@ -13,7 +13,14 @@ router.post('/login',
         res.redirect('/');
     });
 
-router.get('/signup',homeController.getSignup);
-router.post('/signup',homeController.postSignup);
+router.get('/logout', function (req, res, next) {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
+});
+
+router.get('/signup', homeController.getSignup);
+router.post('/signup', homeController.postSignup);
 
 module.exports = router;

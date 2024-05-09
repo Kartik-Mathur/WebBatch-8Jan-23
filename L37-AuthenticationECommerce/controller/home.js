@@ -17,7 +17,8 @@ module.exports.getHome= async(req, res, next) => {
         const {getProductsCategoryWise} = require('../utils/library')
         products = getProductsCategoryWise(products);
         res.render('index',{
-            products
+            products,
+            isAdmin: (req.user.role == 'admin') ? true: false
         });
     }
     catch(err){

@@ -2,7 +2,8 @@ const Products = require('../models/products');
 
 module.exports.getAdminHome = (req, res, next) => {
     res.render('admin/home', {
-        isAdmin: true
+        isAdmin: true,
+        isLoggedIn: true
     });
 }
 
@@ -14,11 +15,11 @@ module.exports.postProductsAdd = async (req, res, next) => {
             price,
             description,
             imageUrl,
-            seller
+            seller,
+            isAdmin: true,
+            isLoggedIn: true
         });
-        res.redirect('/admin/products/all', {
-            isAdmin: true
-        });
+        res.redirect('/admin/products/all');
     }
     catch (err) {
         res.send(err)
@@ -38,13 +39,15 @@ module.exports.getProductsAll = async (req, res, next) => {
     // res.send(data);
     res.render('admin/products-list', {
         products: data,
-        isAdmin: true
+        isAdmin: true,
+        isLoggedIn: true
     });
 }
 
 module.exports.getProductsAdd = (req, res, next) => {
     res.render('admin/add-product', {
-        isAdmin: true
+        isAdmin: true,
+        isLoggedIn: true
     });
 }
 
@@ -54,7 +57,8 @@ module.exports.getProductsUpdate = async (req, res, next) => {
         const product = await Products.findById(id);
         res.render('admin/update-product', {
             product,
-            isAdmin: true
+            isAdmin: true,
+            isLoggedIn: true
         });
     }
     catch (err) {
@@ -88,7 +92,8 @@ module.exports.getDeleteProductById = async (req, res, next) => {
     try {
         let p = await Products.deleteOne({ _id: id });
         res.redirect('/admin/products/all', {
-            isAdmin: true
+            isAdmin: true,
+            isLoggedIn: true
         });
     }
     catch (err) {

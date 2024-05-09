@@ -41,10 +41,12 @@ app.use('/', homeRouter);
 // Routes
 // /admin, /admin/abc, /admin/abc/def, /admin/abc/../../
 const adminRouter = require('./routes/admin');
-app.use('/admin', adminRouter);
+const {isAdmin} = require('./middlewares/isAdmin');
+app.use('/admin',isAdmin,adminRouter);
 
 const shopRouter = require('./routes/shop');
-app.use('/shop', shopRouter);
+const { isLoggedIn } = require('./middlewares/isLoggedIn');
+app.use('/shop', isLoggedIn, shopRouter);
 
 mongoose.connect('mongodb://127.0.0.1:27017/ecommerce').then(() => {
     app.listen(PORT, () => {
