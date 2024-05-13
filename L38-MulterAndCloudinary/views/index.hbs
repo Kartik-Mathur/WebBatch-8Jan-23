@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploading Images</title>
+
+    <style>
+        form{
+            border: 1px solid black;
+            padding: 10px;
+            width: 300px;
+            margin: 10px auto;
+        }
+
+        button{
+            width: 100%;
+            background-color: black;
+            color: white;
+        }
+        input{
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Learning to upload images</h1>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="text" placeholder="Enter category" name="category"><br>
+        <input type="file" name="image" /><br>
+        <button type="submit">Upload</button>
+    </form>
+
+</body>
+
+</html>

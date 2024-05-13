@@ -20,7 +20,7 @@ module.exports.getProductsById = async (req, res, next) => {
         res.render('shop/product-details', {
             product: product,
             isLoggedIn: true,
-            isAdmin: (req.user.role == 'admin') ? true: false
+            isAdmin: (req.user.role == 'admin') ? true : false
         })
 
     } catch (err) {
@@ -37,7 +37,7 @@ module.exports.getHome = async (req, res, next) => {
         res.render('shop/home', {
             products: categoryProducts,
             isLoggedIn: true,
-            isAdmin: (req.user.role == 'admin') ? true: false
+            isAdmin: (req.user.role == 'admin') ? true : false
         })
     } catch (err) {
 
@@ -87,7 +87,7 @@ module.exports.getCart = async (req, res, next) => {
             cart: user.cart,
             totalPrice,
             isLoggedIn: true,
-            isAdmin: (req.user.role == 'admin') ? true: false
+            isAdmin: (req.user.role == 'admin') ? true : false
         });
     } catch (err) {
         next(err);
@@ -117,7 +117,7 @@ module.exports.getIncrease = async (req, res, next) => {
         res.send({
             id: user.cart,
             totalPrice,
-            isAdmin: (req.user.role == 'admin') ? true: false
+            isAdmin: (req.user.role == 'admin') ? true : false
         });
     } catch (err) {
         next(err);
@@ -152,7 +152,7 @@ module.exports.getDecrease = async (req, res, next) => {
         res.send({
             id: user.cart,
             totalPrice,
-            isAdmin: (req.user.role == 'admin') ? true: false
+            isAdmin: (req.user.role == 'admin') ? true : false
         });
     } catch (err) {
         next(err);
@@ -166,7 +166,7 @@ module.exports.getCartBuy = async (req, res, next) => {
         // console.log(user);
 
         let cart = user.cart;
-        console.log("CART" ,cart)
+        console.log("CART", cart)
         // orders: [ {product: {}, quantity: , price: }, {product: {}, quantity: , price: }]
         let myOrder = req.user.orders || [];
 
@@ -182,21 +182,21 @@ module.exports.getCartBuy = async (req, res, next) => {
         for (let i = 0; i < cart.length; i++) {
             const item = cart[i];
             let order = {};
-            let product = await Products.findOne({_id: item.id});
+            let product = await Products.findOne({ _id: item.id });
             // console.log("Mera product" ,product)
             order.product = product;
             order.quantity = item.quantity;
             order.price = order.product.price * order.quantity;
-            console.log("Order ",order);
+            console.log("Order ", order);
             newOrder.push(order);
         }
 
         // console.log("NEW ORDER", newOrder);
 
-        newOrder.forEach((item)=>{
+        newOrder.forEach((item) => {
             myOrder.unshift(item);
         })
-        
+
         // console.log(myOrder[0]);
         await Users.updateOne({
             _id: req.user._id
@@ -219,12 +219,25 @@ module.exports.getCartBuy = async (req, res, next) => {
 module.exports.getOrderHistory = (req, res, next) => {
     try {
         let orders = req.user.orders;
-        res.render('shop/orders',{
+        res.render('shop/orders', {
             orders,
             isLoggedIn: true
         })
     } catch (err) {
 
+    }
+}
+
+module.exports.getProductDetails = async (req, res, next) => {
+    try {
+        let product = await Products.findById(req.params.id);
+        res.render('shop/product', {
+            product,
+            isLoggedIn: true
+        })
+    }
+    catch (err) {
+        next(err);
     }
 }
 

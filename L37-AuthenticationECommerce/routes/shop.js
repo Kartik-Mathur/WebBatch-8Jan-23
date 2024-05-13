@@ -16,5 +16,7 @@ router.get('/cart/decrease/:id', shopController.getDecrease);
 router.get('/cart/buy', shopController.getCartBuy);
 router.get('/order/history', shopController.getOrderHistory);
 
+router.get('/product/details/:id', shopController.getProductDetails);
+
 
 module.exports = router;
