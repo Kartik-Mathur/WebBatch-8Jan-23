@@ -163,33 +163,54 @@ module.exports.getDecrease = async (req, res, next) => {
 module.exports.getCartBuy = async (req, res, next) => {
     try {
         let user = await Users.findOne({ _id: req.user._id }).populate('cart.id');
-        let cart = user.cart;
+        // console.log(user);
 
-        let myOrder = req.user.orders;
-        console.log(myOrder);
+        let cart = user.cart;
+        console.log("CART" ,cart)
+        // orders: [ {product: {}, quantity: , price: }, {product: {}, quantity: , price: }]
+        let myOrder = req.user.orders || [];
 
         console.log("Before", myOrder);
-        let newOrder = cart.map(item => {
+        // let newOrder = cart.map(function(item) {
+        //     let order = {};
+        //     order.product = item.id;
+        //     order.quantity = item.quantity;
+        //     order.price = item.id.price * item.quantity;
+        //     return order;
+        // })
+        let newOrder = [];
+        for (let i = 0; i < cart.length; i++) {
+            const item = cart[i];
             let order = {};
-            order.product = item.id;
+            let product = await Products.findOne({_id: item.id});
+            // console.log("Mera product" ,product)
+            order.product = product;
             order.quantity = item.quantity;
             order.price = order.product.price * order.quantity;
-            return order;
+            console.log("Order ",order);
+            newOrder.push(order);
+        }
+
+        // console.log("NEW ORDER", newOrder);
+
+        newOrder.forEach((item)=>{
+            myOrder.unshift(item);
         })
-        console.log("NEW ORDER", newOrder);
-        myOrder.push(newOrder);
+        
         // console.log(myOrder[0]);
-        // await Users.updateOne({
-        //     _id: req.user._id
-        // }, {
-        //     orders: newOrder,
-        //     cart: []
-        // })
-        // console.log(req.user.orders);
-        res.send({
-            message: "Order placed successfully",
-            myOrder
+        await Users.updateOne({
+            _id: req.user._id
+        }, {
+            orders: myOrder,
+            cart: []
         })
+        // console.log(req.user.orders);
+        res.redirect('/shop/order/history')
+        // res.send({
+        //     message: "Order placed successfully",
+        //     myOrder,
+        //     cart
+        // })
     } catch (err) {
         next(err);
     }
@@ -198,7 +219,24 @@ module.exports.getCartBuy = async (req, res, next) => {
 module.exports.getOrderHistory = (req, res, next) => {
     try {
         let orders = req.user.orders;
-        res.send(orders);
+        res.render('shop/orders',{
+            orders,
+            isLoggedIn: true
+        })
+    } catch (err) {
+
+    }
+}
+
+
+module.exports.getBuy = async (req, res, next) => {
+    try {
+        let orders = req.user.orders;
+        let cart = req.user.cart;
+        res.send({
+            orders,
+            cart
+        });
     } catch (err) {
 
     }

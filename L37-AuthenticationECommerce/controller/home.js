@@ -2,6 +2,7 @@ const Products = require('../models/products');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Users = require('../models/user');
+const { isLoggedIn } = require('../middlewares/isLoggedIn');
 
 module.exports.getLogin = (req,res,next)=>{
     if(req.isAuthenticated())return res.redirect('/profile');
@@ -16,9 +17,11 @@ module.exports.getHome= async(req, res, next) => {
         let products = await Products.find();
         const {getProductsCategoryWise} = require('../utils/library')
         products = getProductsCategoryWise(products);
+        
         res.render('index',{
             products,
-            isAdmin: (req.user.role == 'admin') ? true: false
+            isAdmin: (req.user.role == 'admin') ? true: false,
+            isLoggedIn: true
         });
     }
     catch(err){

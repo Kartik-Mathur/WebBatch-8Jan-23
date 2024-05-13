@@ -6,6 +6,15 @@ const passport = require('passport');
 const homeController = require('../controller/home');
 router.get('/', homeController.getHome);
 router.get('/login', homeController.getLogin);
+router.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile'] }));
+
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    });
 
 router.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),

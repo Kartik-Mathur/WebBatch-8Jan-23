@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>generalcss}}
+
+</head>
+<body>
+    {{>navbar}}
+    <h1>Welcome to orders Page</h1>
+
+    {{#each orders as |order|}}
+        <div class="orderItem">
+            <img src={{order.product.imageUrl}} alt="product-img"> <br>
+            <div class="productName">
+                {{order.product.name}}, Price: {{order.product.price}} <br>
+                Description: {{order.product.description}} <br>
+                Seller: {{order.product.seller}} <br>
+            </div>
+
+            <div class="orderDetails">
+                <div>
+                    Quanity: {{order.quantity}}
+                </div>
+                <div>
+                    Total Price: {{order.price}}
+                </div>
+            </div>
+        </div>
+        
+    {{/each}}
+</body>
+</html>

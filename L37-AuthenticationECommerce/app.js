@@ -41,8 +41,8 @@ app.use('/', homeRouter);
 // Routes
 // /admin, /admin/abc, /admin/abc/def, /admin/abc/../../
 const adminRouter = require('./routes/admin');
-const {isAdmin} = require('./middlewares/isAdmin');
-app.use('/admin',isAdmin,adminRouter);
+const { isAdmin } = require('./middlewares/isAdmin');
+app.use('/admin', isAdmin, adminRouter);
 
 const shopRouter = require('./routes/shop');
 const { isLoggedIn } = require('./middlewares/isLoggedIn');
