@@ -5,31 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Plus Plus</title>
+    <title>WhatsApp++</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
 
-    <h1 class="chat-app-heading">Chat App</h1>
+    <div class="login">
+        <h1>Welcome to Whatsapp++</h1>
+        <input type="text" placeholder="Enter username" class="username">
+        <button class="login-btn">Login</button>
+    </div>
 
-    <div class="chat-box">
-        <div class="user-details">
+    <div class="chat-application">
+        <h1 class="chat-app-heading">Chat App</h1>
 
-        </div>
+        <div class="chat-box">
+            <div class="user-details">
+                <div class="current-user">
+                </div>
+                <div class="all-users-status"></div>
+            </div>
 
-        <div class="chat-messenger">
+            <div class="chat-messenger">
+                <div class="chats">
 
+                </div>
 
-            <div class="send-message">
-                <input type="text" placeholder="Type a message" class="message-input">
-                <button class="send-button">
-                    <span class="gt-logo">&gt;</span>
-                </button>
+                <div class="send-message">
+                    <input type="text" placeholder="Type a message" class="message-input">
+                    <button class="send-button">
+                        <span class="gt-logo">&gt;</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
+
+    <script src="/js/script.js"></script>
 
 </body>
 

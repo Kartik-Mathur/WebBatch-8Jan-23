@@ -8,11 +8,7 @@
     /* border: 5px solid black; */
     margin: auto;
     border-radius: 5px;
-}
-
-.user-details,
-.chat-messenger{
-    display: inline-block;
+    display: flex;
 }
 
 
@@ -58,4 +54,38 @@
 
 .gt-logo{
     font-size: 30px;
+}
+
+.chat-application{
+    display: none;
+}
+
+
+.current-user{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgb(104, 165, 104);
+}
+
+.chat{
+    display: flex;
+    margin: 5px;
+}
+
+.another-chat{
+    width: 55%;
+    background-color: rgb(133, 199, 133);
+    border-radius: 5px;
+    justify-content: flex-start;
+}
+
+.my-chat{
+    width: 55%;
+    justify-content: flex-end;
+    background-color: beige;
+    border-radius: 5px;
 }
