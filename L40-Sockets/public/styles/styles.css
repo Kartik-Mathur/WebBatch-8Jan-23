@@ -72,20 +72,29 @@
 }
 
 .chat{
-    display: flex;
+    /* display: flex; */
     margin: 5px;
+    width: 100%;
+    /* border: 1px solid black; */
+}
+
+.chat::after{
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .another-chat{
     width: 55%;
     background-color: rgb(133, 199, 133);
     border-radius: 5px;
-    justify-content: flex-start;
+    float: left;
 }
 
 .my-chat{
     width: 55%;
-    justify-content: flex-end;
+    float: right;
     background-color: beige;
     border-radius: 5px;
+    text-align: right;
 }

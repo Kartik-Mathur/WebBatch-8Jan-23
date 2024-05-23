@@ -17,8 +17,10 @@ document.querySelector('.login-btn').addEventListener('click',(ev)=>{
     }
 })
 
-socket.on('useradded',({msg,username})=>{
-    console.log(msg);
+socket.on('useradded',({msg,username,clients,clientCount})=>{
+    console.log(clients);
+    if(clientCount)
+        document.querySelector('.active-users').innerText = clientCount;
     login.style.display = 'none';
     chatApplication.style.display = 'block';
     let currentUser = document.querySelector('.current-user');
@@ -27,7 +29,7 @@ socket.on('useradded',({msg,username})=>{
 
 document.querySelector('.send-button').addEventListener('click',()=>{
     let messageInput = document.querySelector('.message-input');
-    let message = messageInput.value;
+    let message = messageInput.value
     if(message.length>0){
         messageInput.value = '';
         socket.emit('newmessage',{
@@ -37,19 +39,22 @@ document.querySelector('.send-button').addEventListener('click',()=>{
     }
 })
 
-socket.on('messagerecieved',({message,socketId,username})=>{
+socket.on('messagerecieved',({message,socketId,username, clients,clientCount})=>{
     let chats = document.querySelector('.chats');
     let chat = document.createElement('div');
+    document.querySelector('.active-users').innerText = clientCount;
     chat.classList.add('chat');
+    console.log(clients, clientCount)
     // chat.innerHTML = `<div class="chat-message">${message}</div>`;
     let chatMessage = document.createElement('div');
     chatMessage.classList.add('chat-message');
-    chatMessage.innerText = message;
-   
+    
     if(socketId === socket.id){
+        chatMessage.innerText = `${message}`;
         chatMessage.classList.add('my-chat');
     }
     else{
+        chatMessage.innerText = `${username} : ${message}`;
         chatMessage.classList.add('another-chat');
     }
     chat.appendChild(chatMessage);
