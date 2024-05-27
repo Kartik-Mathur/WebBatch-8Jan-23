@@ -20,16 +20,35 @@ io.on("connection", (socket) => {
     // console.log(io.sockets.sockets);
     // console.log(io.engine.clientsCount);
     // console.log(socket.id);
-    socket.on('newuser', ({ socketId, name }) => {
+
+    // socket.broadcast.emit('newuserjoined',{
+    //     msg: 'new user has joined'
+    // })
+
+    socket.on('newuser', async ({ socketId, name }) => {
         userMap[socket.id] = name;
         let clients = [];
-        io.sockets.sockets.forEach(c => clients.push(c.id));
-        console.log("Current Clients: ",clients);
+        // io.sockets.sockets.forEach(c => clients.push(c.id));
+        // console.log("Current Clients: ",clients);
+        let sockets = await io.fetchSockets();
+        sockets.forEach(socket=>{
+            if(userMap[socket.id]){
+                clients.push({id: socket.id,name: userMap[socket.id]});
+            }
+        })
+        console.log("Client to chat with",clients);
         socket.emit('useradded', {
             msg: "User added successfully",
             username: userMap[socket.id],
-            clients
+            clients,
+            clientsCount: clients.length
         });
+
+        socket.broadcast.emit('updatedetails',{
+            msg: "New users are added!",
+            clients,
+            clientsCount: clients.length
+        })
     })
 
     socket.on('newmessage', ({ message, socketId }) => {
@@ -48,6 +67,25 @@ io.on("connection", (socket) => {
             socketId: socket.id,
             clients,
             clientCount: io.engine.clientsCount
+        })
+    })
+
+
+    socket.on('disconnect',async ()=>{
+        let sockets = await io.fetchSockets();
+        let newUserMap={}
+        let clients = [];
+        sockets.forEach(socket=>{
+            if(userMap[socket.id]){
+                newUserMap[socket.id] = userMap[socket.id];
+                clients.push({id: socket.id,name: userMap[socket.id]});
+            }
+        })
+        userMap = newUserMap;
+        io.emit('updateDetailsAll',{
+            msg: "A User left the chat!",
+            clients,
+            clientsCount: clients.length
         })
     })
 
