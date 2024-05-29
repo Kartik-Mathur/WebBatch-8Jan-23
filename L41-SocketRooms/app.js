@@ -16,7 +16,18 @@ let userMap = {};
 
 io.on("connection", (socket) => {
 
+    socket.on('subscribecpp', () => {
+        socket.join('cpp');
+        io.to('cpp').emit('newcppjoin', {
+            msg: 'A user subscribed to cpp group'
+        })
+    })
 
+    socket.on('cppmsgsend', ({msg}) => {
+        io.to('cpp').emit('cppmsgrec', {
+            msg
+        })
+    })
 
 
 });
