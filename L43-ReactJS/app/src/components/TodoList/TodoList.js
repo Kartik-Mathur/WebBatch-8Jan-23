@@ -1,12 +1,19 @@
 import React from 'react'
 import TodoItem from '../TodoItem/TodoItem';
 
-const TodoList = (props) => {
-    let tasks = props.tasks;
+const TodoList = ({ tasks, decreasePriority,increasePriority, deleteTask }) => {
+
     return (
         <div>
             <ul>
-                {tasks.map((task, indx) => <TodoItem key={indx} taskName={task} />)}
+                {tasks.map((task, indx) =>
+                    <TodoItem
+                        key={indx}
+                        decreasePriority={decreasePriority}
+                        taskName={task}
+                        increasePriority={increasePriority}
+                        deleteTask={deleteTask}
+                    />)}
             </ul>
         </div>
     )
