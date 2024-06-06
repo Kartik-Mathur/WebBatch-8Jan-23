@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import TodoList from '../TodoList/TodoList';
+import TodoInput from '../TodoInput/TodoInput';
 
 
 const TodoApp = () => {
     let initialTasks = ['Cricket', 'Dance', 'Sing'];
     const [tasks, setTasks] = useState(initialTasks);
+
+    function addTask(newTask){
+        setTasks([newTask,...tasks])
+    }
 
     function decreasePriority(taskName) {
         let newTask = [...tasks];
@@ -39,7 +44,7 @@ const TodoApp = () => {
     return (
         <div>
             <h2>Todo App</h2>
-
+            <TodoInput addTask={addTask} />
             {/* <input type='text' placeholder='Enter Task Name' />
         <button onClick={taskHandler}>Add Task</button> */}
             {/* TodoList({tasks}); */}

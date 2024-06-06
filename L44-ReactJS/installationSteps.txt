@@ -1,0 +1,15 @@
+1. Install react and react-dom
+2. Install as DEV dependencies
+    - babel-loader
+    - babel-preset-react
+    - webpack
+    - webpack-cli
+> npm i -D babel-loader babel-preset-react webpack webpack-cli
+
+3. Create static folder and src folder
+4. Create index.html in static folder and add <div id="root"></div>
+    - Include <script src="bundle.js"></script>
+    - `bundle.js` will include all the JS code from the src folder inside of it
+
+5. Create a new file called `webpack.config.js` and add the following configuration:
+
