@@ -1,20 +1,37 @@
-import { useEffect, useState } from 'react';
-import classes from './App.module.css';
+import { useEffect, useState, useReducer } from 'react';
+import classes from './UseReducer.module.css';
+
+
+// dispatchEmail is this function that user has defined,
+// calling dispatchEmail would mean calling this emailReducer
+// ab emailReducer function ke through hum previous state ko update krenge
+const emailReducer = (state, action) => {
+    // state, action (state: It it the value of the new state, jo hume chahiye)
+    // action : What we need to do
+}
+
 
 function App() {
-    const [email, setEmail] = useState('');
+    // const [email, setEmail] = useState("");
+    // const [validEmail, setValidEmail] = useState(true);
     const [password, setPassword] = useState('');
-    const [validEmail, setValidEmail] = useState(true);
     const [validPassword, setValidPassword] = useState(true);
     const [isValidForm, setIsValidForm] = useState(false);
+
+
+    const [email, dispatchEmail] = useReducer(emailReducer, {
+        value: '',
+        isValid: true
+    });
 
     useEffect(() => {
         setIsValidForm(
             email.includes('@') && password.trim().length > 5
         )
-    }, [email, password])
+    }, [validEmail, validPassword])
 
     const emailChangeHandler = (ev) => {
+
         setEmail(ev.target.value);
 
         setIsValidForm(

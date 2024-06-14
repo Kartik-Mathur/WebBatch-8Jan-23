@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client';
-import CatFacts from './components/CatFacts/CatFacts';
-import Cleanup from './components/Cleanup/Cleanup';
-import SearchProducts from './components/SearchProducts/SearchProducts';
-
+// import CatFacts from './components/CatFacts/CatFacts';
+// import Cleanup from './components/Cleanup/Cleanup';
+// import SearchProducts from './components/SearchProducts/SearchProducts';
+import LearnReducer from './components/UseReducer/LearnReducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,6 +11,7 @@ root.render(
         {/* <div>Hello World</div> */}
         {/* <CatFacts /> */}
         {/* <Cleanup /> */}
-        <SearchProducts />
+        {/* <SearchProducts /> */}
+        <LearnReducer />
     </React.StrictMode>
 )
