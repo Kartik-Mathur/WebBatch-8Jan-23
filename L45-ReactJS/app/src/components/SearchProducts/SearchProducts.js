@@ -1,32 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import products from './products'
+import initialProducts from './products'
 
 const SearchProducts = () => {
-    const [product, setProduct] = useState("");
+    const [products, setProducts] = useState(initialProducts);
+    const [searchItem, setSearchItem] = useState('');
 
     useEffect(() => {
-
         let id = setTimeout(() => {
-            console.log("Running useEffect");
-            console.log("Searching for product", product);
+            console.log("You are searching", searchItem);
+            const filteredProducts = initialProducts.filter(p => {
+                if (p.toLowerCase().includes(searchItem.toLowerCase())) {
+                    return true;
+                }
+                return false;
+            })
+            setProducts(filteredProducts);
         }, 1000);
 
         return () => {
             clearInterval(id);
         }
-    }, [product]);
+    }, [searchItem]);
 
     const inputChangeHandler = (ev) => {
-        // console.log(ev.target.value);
-        setProduct(ev.target.value);
-        // console.log("Calling API");
+        setSearchItem(ev.target.value);
     }
 
     return (
         <>
             <input type='text' placeholder='Search Product' onChange={inputChangeHandler} />
             <button>Search</button>
-            {products.map(((p,indx) => {
+            {products.map(((p, indx) => {
                 return <div key={indx}>{p}</div>
             }))}
         </>
