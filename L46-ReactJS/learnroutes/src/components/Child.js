@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
-import { moneyContext, propertyContext } from '../App';
+import { moneyContext} from '../context/MoneyContext';
+import { propertyContext } from '../context/PropertyContext';
+// import { moneyContext, propertyContext } from '../App';
+
 
 const Child = () => {
     const data = useContext(moneyContext);
     const val = useContext(propertyContext);
-    
+
     return (
         <div>
             <h2>I am just a Baby!</h2>

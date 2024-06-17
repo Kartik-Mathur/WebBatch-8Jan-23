@@ -1,10 +1,16 @@
 import React from 'react'
 import Grandfather from './components/Grandfather'
+import MoneyContext from './context/MoneyContext'
+import PropertyContext from './context/PropertyContext'
 
 const Main = () => {
     return (
         <div>
-            <Grandfather />
+            <MoneyContext>
+                <PropertyContext>
+                    <Grandfather />
+                </PropertyContext>
+            </MoneyContext>
         </div>
     )
 }
