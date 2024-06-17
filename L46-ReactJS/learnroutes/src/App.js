@@ -3,7 +3,10 @@ import Grandfather from './components/Grandfather'
 import './App.css'
 
 // 1. Create a context here...
-const moneyContext = createContext();
+const moneyContext = createContext({
+  img: '',
+  price: ''
+});
 // Provider and Consumer issi context ki help se create hote hai
 // Provider: Data ko provide karta hai
 // Consumer: Data ko consume karta hai, but consumer toh koi successor hoga
@@ -15,6 +18,16 @@ let data = {
   price: "100 Crores"
 }
 
+// 2. Creating another context
+const propertyContext = createContext({
+  address: '',
+  area: ''
+});
+
+let propertyData = {
+  address: "Mumbai",
+  area: "1000 sqft"
+}
 
 const App = () => {
   return (
@@ -22,7 +35,9 @@ const App = () => {
       {/* Provider ke andar jis bhi component ko wrap krenge, uske children
     sabhi components ko access milega context ki value ka */}
       <moneyContext.Provider value={data}>
-        <Grandfather />
+        <propertyContext.Provider value={propertyData}>
+          <Grandfather />
+        </propertyContext.Provider>
       </moneyContext.Provider>
     </>
   )
@@ -31,4 +46,4 @@ const App = () => {
 export default App
 // Export the context so that who so ever wants the data, can use this context
 // to get access to the data passed in the value key
-export { moneyContext }
+export { moneyContext, propertyContext }
