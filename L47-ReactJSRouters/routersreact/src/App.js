@@ -20,7 +20,7 @@ const App = () => {
       <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
+        <Route path='/contact/:name' element={<Contact />} />
         {/* <Route path='/cpp' element={<Cpp />} /> */}
         <Route path='/courses' element={<Courses />}>
           <Route index element={<Python />} />
@@ -31,7 +31,6 @@ const App = () => {
           <Route path='java' element={<Java />} />
           <Route path='python' element={<Python />} />
         </Route>
-
         <Route path='*' element={<Error />} />
       </Routes>
     </>
