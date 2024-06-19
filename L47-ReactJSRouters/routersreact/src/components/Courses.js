@@ -11,16 +11,16 @@ const Courses = () => {
                 <Link className='courses-navlink' to="python">Python</Link>
             </nav>
 
-            {/* <div className='container'>
+            <div className='container'>
                 <div className='side-a'> SIDE - A
 
                 </div>
                 <div className='side-b'> SIDE - B
 
                 </div>
-            </div> */}
+            </div>
 
-            <div className='side-c'> 
+            <div className='side-c'>
                 <Outlet />
             </div>
         </div>

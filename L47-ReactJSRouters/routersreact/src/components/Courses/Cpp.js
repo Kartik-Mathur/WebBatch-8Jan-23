@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
 const Cpp = () => {
     return (
@@ -18,6 +19,10 @@ const Cpp = () => {
                 <li className='course-feature-link'>Low-level memory management</li>
                 <li className='course-feature-link'>Multi-paradigm language (supports OOP, imperative, and functional programming)</li>
             </ul>
+            <Link to="cp" >Competitive</Link>
+            <Link to="ip" >Interview</Link>
+
+            <Outlet />
         </div>
     )
 }
