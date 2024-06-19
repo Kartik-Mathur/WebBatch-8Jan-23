@@ -1,8 +1,9 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
-.navbar{
+
+.navbar {
   display: flex;
   width: 100%;
   height: 40px;
@@ -13,16 +14,62 @@
   border: 1px solid black;
 }
 
-.navlinks{
+.navlinks {
   color: white;
   text-decoration: none;
 }
 
-.navlinks:visited{
+.navlinks:visited {
   color: white;
 }
 
-.active{
+.active {
   /* text-decoration: underline; */
   color: rgb(0, 254, 170) !important;
+}
+
+
+.coursesHeading {
+  margin-top: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.courses-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  width: 50%;
+  margin: auto;
+}
+
+.courses-navlink{
+  color: black;
+  text-decoration: none;
+}
+
+.container{
+  display: flex;
+}
+
+.side-a,
+.side-b{
+  width: 50%;
+  border: 1px solid black;
+  height: 100px;
+}
+
+.side-c{
+  width: 80%;
+  margin: auto;
+  border: 1px solid black;
+  /* height: 300px; */
+}
+
+.course-feature-link{
+  list-style: none;
+  margin: 10px 0;
 }
