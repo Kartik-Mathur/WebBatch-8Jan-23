@@ -1,3 +1,56 @@
-.w-100{
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.w-100 {
   width: 100%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.admin-nav {
+  background-color: rgb(255, 48, 48);
+  color: white;
+  font-weight: 800;
+  height: 50px;
+}
+
+.admin-navlink {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  color: blue;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.my-10{
+  margin: 10px 0px;
 }

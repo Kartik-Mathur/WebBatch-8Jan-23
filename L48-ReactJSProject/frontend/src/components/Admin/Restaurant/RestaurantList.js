@@ -21,7 +21,6 @@ const RestaurantList = () => {
     useEffect(() => {
         fetchRestaurants()
             .then((data) => {
-                // console.log(data)
                 setRestaurants(data.restaurant);
             })
             .catch(err => {
