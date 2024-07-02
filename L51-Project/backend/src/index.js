@@ -10,11 +10,14 @@ app.use(cors({
     origin: process.env.CORS_ORIGINS,
     credentials: true
 }))
+
 app.use(bodyParser.json({ limit: "4kb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "4kb" }));
 app.use(express.static('public')); // To store the information that front end might provide
 
 app.use(cookieParser());
+
+app.use('/',);
 
 mongoose.connect(`${process.env.DB_PATH}/${process.env.DB_NAME}`)
     .then(() => {
