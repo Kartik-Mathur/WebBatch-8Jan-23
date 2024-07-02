@@ -3,6 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
+import userRouter from "./routes/user.js";
 const app = express();
 const PORT = process.env.PORT;
 
@@ -17,7 +18,7 @@ app.use(express.static('public')); // To store the information that front end mi
 
 app.use(cookieParser());
 
-app.use('/',);
+app.use('/', userRouter);
 
 mongoose.connect(`${process.env.DB_PATH}/${process.env.DB_NAME}`)
     .then(() => {
