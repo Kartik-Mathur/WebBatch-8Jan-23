@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const userSchema = new Schema({
     username: {
@@ -13,18 +14,26 @@ const userSchema = new Schema({
         required: true,
         trim: true
     },
+    name: {
+        type: "String",
+        required: true,
+        trim: true
+    },
     email: {
         type: String,
         required: true,
         trim: true,
         unique: true
     },
+    image: {
+        type: String,
+        required: true
+    },
     token: {
         type: String,
-        default: undefined
+        default: ""
     }
 });
-
 
 
 // To hash password before we save the user, we can write the entire code here
@@ -40,6 +49,7 @@ userSchema.pre("save", async function (next) {
     }
 });
 
+
 userSchema.methods.checkPassword = async function (password) {
     try {
         const user = this;
@@ -50,6 +60,21 @@ userSchema.methods.checkPassword = async function (password) {
     }
 }
 
+userSchema.methods.generateToken = async function () {
+    try {
+        let user = this;
+
+        const token = jwt.sign({
+            _id: user._id
+        }, process.env.TOKEN_SECRET);
+
+        user.token = token;
+        await user.save();
+        return token;
+    } catch (error) {
+        throw new Error("Cannot generate the token for the current user");
+    }
+}
 
 const User = mongoose.model("User", userSchema);
 export default User
