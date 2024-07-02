@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-
+import bcrypt from "bcrypt";
 const userSchema = new Schema({
     username: {
         type: String,
@@ -53,7 +53,24 @@ const userSchema = new Schema({
     }
 }, {
     timestamps: true
-})
+});
+
+
+userSchema.pre('save', function (next) {
+    // Password change nhi hua toh kuch nahi krna
+    if (!this.isModified("password")) return;
+
+    // Password change hua toh hash krna
+    const user = this;
+    bcrypt.hash(user.password, 10, (err, hash) => {
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        console.log(user)
+        next();
+    });
+});
 
 
 const User = mongoose.model("User", userSchema);
