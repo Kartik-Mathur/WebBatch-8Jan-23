@@ -42,7 +42,10 @@ const restaurantSchema = new Schema({
     rating: Number,
     cusines: [
         {
-            category: String,
+            category: {
+                type: 'String',
+                lowercase: true
+            },
             food: [
                 {
                     name: String,
