@@ -17,8 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "4kb" }));
 app.use(express.static('public')); // To store the information that front end might provide
 
 app.use(cookieParser());
-
 app.use('/', userRouter);
+
+import restaurantRouter from "../src/routes/restaurant.js";
+app.use('/restaurant', restaurantRouter);
 
 mongoose.connect(`${process.env.DB_PATH}/${process.env.DB_NAME}`)
     .then(() => {

@@ -5,12 +5,39 @@ import jwt from "jsonwebtoken";
 const restaurantSchema = new Schema({
     name: {
         type: "String",
-        lowercase: true
+        lowercase: true,
+        required: true,
+        trim: true,
+        unique: true
     },
     address: {
         type: "String",
         lowercase: true,
         unique: true,
+        required: true
+    },
+    email: {
+        type: "String",
+        lowercase: true,
+        unique: true,
+        required: true
+    },
+    contact: {
+        type: "String",
+        required: true
+    },
+    coverImage: {
+        type: "String",
+        required: true
+    },
+    images: [
+        {
+            url: "String"
+        }
+    ],
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
     rating: Number,
     cusines: [
@@ -31,11 +58,11 @@ const restaurantSchema = new Schema({
             ]
         }
     ],
-    cusineCategories: [
-        {
-            name: String
-        }
-    ],
+    // cusineCategories: [
+    //     {
+    //         name: String
+    //     }
+    // ],
     menu: [
         {
             imageUrl: String

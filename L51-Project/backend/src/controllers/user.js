@@ -2,7 +2,7 @@ import User from "../models/user.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import ErrorWrapper from "../utils/ErrorWrapper.js";
 import uploadOnCloudinary from "../utils/uploadOnCloudinary.js";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 
 export const postSignup = ErrorWrapper(async function (req, res, next) {
     const { username, password, email, name } = req.body;
@@ -55,8 +55,6 @@ export const postSignup = ErrorWrapper(async function (req, res, next) {
         throw new ErrorHandler(500, `Error while creating new user`);
     }
 })
-
-
 
 
 
