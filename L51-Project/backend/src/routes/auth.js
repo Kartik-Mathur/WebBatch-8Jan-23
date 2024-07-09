@@ -7,5 +7,12 @@ const router = express.Router();
 router.post('/signup', upload.single("image"), postSignup);
 router.post('/login', postLogin);
 
+// HOMEWORK ROUTES
+// CRUD user
+    // - email
+    // - password Implement Forget password
+    // 
+
+
 
 export default router;
