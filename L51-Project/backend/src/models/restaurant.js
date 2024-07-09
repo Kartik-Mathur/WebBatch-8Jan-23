@@ -37,7 +37,8 @@ const restaurantSchema = new Schema({
     ],
     owner: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        required: true
     },
     rating: Number,
     cusines: [
@@ -51,7 +52,7 @@ const restaurantSchema = new Schema({
                     name: String,
                     price: Number,
                     description: String,
-                    type: String,
+                    veg: Boolean,
                     images: [
                         {
                             url: String
@@ -61,11 +62,11 @@ const restaurantSchema = new Schema({
             ]
         }
     ],
-    // cusineCategories: [
-    //     {
-    //         name: String
-    //     }
-    // ],
+    cusineCategories: [
+        {
+            name: String
+        }
+    ],
     menu: [
         {
             imageUrl: String
@@ -95,6 +96,16 @@ const restaurantSchema = new Schema({
 }, {
     timestamps: true
 });
+
+// restaurantSchema.pre('save',function(next){
+//     if(!this.isModified("cusines")) return next();
+
+//     let cusines = this.cusines;
+//     let newCusineCategories = [];
+//     cusines.forEach(cusine => {
+//         newCusineCategories.push(cusine.category);
+//     })
+// })
 
 const restaurant = mongoose.model("Restaurant", restaurantSchema);
 export default restaurant;

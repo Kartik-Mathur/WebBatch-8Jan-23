@@ -1,5 +1,5 @@
 import express from "express";
-import { postLogin, postSignup } from "../controllers/user.js";
+import { postLogin, postSignup } from "../controllers/auth.js";
 import upload from "../utils/multer.js";
 
 const router = express.Router();

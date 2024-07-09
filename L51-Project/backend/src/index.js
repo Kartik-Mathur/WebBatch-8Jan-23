@@ -3,7 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
-import userRouter from "./routes/user.js";
+import userRouter from "./routes/auth.js";
 const app = express();
 const PORT = process.env.PORT;
 
@@ -20,7 +20,8 @@ app.use(cookieParser());
 app.use('/', userRouter);
 
 import restaurantRouter from "../src/routes/restaurant.js";
-app.use('/restaurant', restaurantRouter);
+import { verifyjwt } from "./middlewares/verifyJWT.js";
+app.use('/restaurant', verifyjwt, restaurantRouter);
 
 mongoose.connect(`${process.env.DB_PATH}/${process.env.DB_NAME}`)
     .then(() => {
