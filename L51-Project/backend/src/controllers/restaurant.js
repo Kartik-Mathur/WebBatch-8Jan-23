@@ -186,7 +186,7 @@ export const postAddFoodItem = ErrorWrapper(async (req, res, next) => {
                 url: cloudinaryResponse.url
             }]
         }
-        console.log(restaurant.cusines[index]);
+        // console.log(restaurant.cusines[index]);
         restaurant.cusines[index]["food"].push(newFoodItem);
         await restaurant.save();
 
@@ -198,4 +198,53 @@ export const postAddFoodItem = ErrorWrapper(async (req, res, next) => {
     } catch (error) {
         throw new ErrorHandler(error.statusCode || 500, error.message);
     }
+})
+
+
+
+
+export const postUpdateFoodItem = ErrorWrapper(async (req, res, next) => {
+    const { id } = req.params;
+    const { name, price, veg, description, category, restaurant_name } = req.body;
+    console.log(req.user);
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(404, `Restaurant with name ${restaurant_name} not found`);
+        }
+
+        const user = req.user;
+        if (user._id.toString() !== restaurant.owner.toString()) {
+            throw new ErrorHandler(401, "You are not authorized to perform this action");
+        }
+
+        const index = restaurant.cusines.findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(404, `Please add the category first in which you want to update the food item of ${restaurant_name}`);
+        }
+
+        const foodIndex = restaurant.cusines[index]["food"].findIndex((item) => item._id.toString() === id.toString());
+        // console.log(restaurant.cusines[index]["food"]);
+        if (foodIndex == -1) {
+            throw new ErrorHandler(404, `Please provide the correct details - food or id inorder to update the details`);
+        }
+
+        if (name) restaurant.cusines[index]["food"][foodIndex].name = name;
+        if (price) restaurant.cusines[index]["food"][foodIndex].price = price;
+        if (veg) restaurant.cusines[index]["food"][foodIndex].veg = veg;
+        if (description) restaurant.cusines[index]["food"][foodIndex].description = description;
+
+        console.log(req.file);
+        await restaurant.save();
+        // const cloudinaryResponse = uploadOnCloudinary(req.file.path);
+
+        res.status(200).json({
+            message: "Food item updated successfully!",
+            data: restaurant
+        })
+
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+
 })
