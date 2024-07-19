@@ -1,5 +1,5 @@
 import express from "express";
-import { postRestaurant, postCusineCategoryAdd, postAddFoodItem,postUpdateFoodItem } from "../controllers/restaurant.js";
+import { postRestaurant, postCusineCategoryAdd, postAddFoodItem,postUpdateFoodItem,getDeleteFoodItem } from "../controllers/restaurant.js";
 import upload from "../utils/multer.js";;
 
 const router = express.Router();
@@ -18,6 +18,7 @@ router.post('/add-food-item', upload.single('image'), postAddFoodItem);
 //]
 // Food
 router.post('/update-food-item/:id', upload.single('image'), postUpdateFoodItem);
+router.get('/delete-food-item/:id', getDeleteFoodItem);
 // Food -> images
 // restaurant->Menu
 // reviews

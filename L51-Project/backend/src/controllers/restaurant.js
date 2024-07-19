@@ -248,3 +248,41 @@ export const postUpdateFoodItem = ErrorWrapper(async (req, res, next) => {
     }
 
 })
+
+
+
+
+export const getDeleteFoodItem = ErrorWrapper(async (req, res, next) => {
+    const {id} = req.params;
+    const { restaurant_name,category } = req.query;
+
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(404, `Restaurant with name ${restaurant_name} not found`);
+        }
+        const user = req.user;
+        if (user._id.toString() !== restaurant.owner.toString()) {
+            throw new ErrorHandler(401, "You are not authorized to perform this action");
+        }
+        const index = restaurant.cusines.findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(404, `Please add the category first in which you want to update the food item of ${restaurant_name}`);
+        }
+        const foodIndex = restaurant.cusines[index]["food"].findIndex((item) => item._id.toString() === id.toString());
+        console.log(restaurant.cusines[index]["food"]);
+        console.log(foodIndex);
+        if (foodIndex == -1) {
+            throw new ErrorHandler(404, `Please provide the correct details - food or id inorder to update the details`);
+        }
+
+        restaurant.cusines[index]["food"].splice(foodIndex, 1);
+        await restaurant.save();
+        res.status(200).json({
+            message: "Food item deleted successfully!",
+            data: restaurant
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
