@@ -235,9 +235,13 @@ export const postUpdateFoodItem = ErrorWrapper(async (req, res, next) => {
         if (description) restaurant.cusines[index]["food"][foodIndex].description = description;
 
         console.log(req.file);
+        if (req.file) {
+            const cloudinaryResponse = await uploadOnCloudinary(req.file.path);
+            const { url } = cloudinaryResponse;
+            restaurant.cusines[index]["food"][foodIndex].image = url;
+        }
+        
         await restaurant.save();
-        // const cloudinaryResponse = uploadOnCloudinary(req.file.path);
-
         res.status(200).json({
             message: "Food item updated successfully!",
             data: restaurant
@@ -253,8 +257,8 @@ export const postUpdateFoodItem = ErrorWrapper(async (req, res, next) => {
 
 
 export const getDeleteFoodItem = ErrorWrapper(async (req, res, next) => {
-    const {id} = req.params;
-    const { restaurant_name,category } = req.query;
+    const { id } = req.params;
+    const { restaurant_name, category } = req.query;
 
     try {
         const restaurant = await Restaurant.findOne({ name: restaurant_name });
@@ -281,6 +285,98 @@ export const getDeleteFoodItem = ErrorWrapper(async (req, res, next) => {
         res.status(200).json({
             message: "Food item deleted successfully!",
             data: restaurant
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
+
+
+
+export const getFoodItems = ErrorWrapper(async (req, res, next) => {
+    const { restaurant_name, category } = req.query;
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(404, `Restaurant with name ${restaurant_name} not found`);
+        }
+        const user = req.user;
+        if (user._id.toString() !== restaurant.owner.toString()) {
+            throw new ErrorHandler(401, "You are not authorized to perform this action");
+        }
+        const index = restaurant.cusines.findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(404, `Please add the category first in which you want to update the
+                    food item of ${restaurant_name}`);
+        }
+        const food = restaurant.cusines[index]["food"];
+        res.status(200).json({
+            message: "Food items fetched successfully!",
+            data: food
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
+
+export const getFoodItem = ErrorWrapper(async (req, res, next) => {
+    const { id } = req.params;
+    const { restaurant_name, category } = req.query;
+
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(404, `Restaurant with name ${restaurant_name} not found`);
+        }
+        const user = req.user;
+        if (user._id.toString() !== restaurant.owner.toString()) {
+            throw new ErrorHandler(401, "You are not authorized to perform this action");
+        }
+        const index = restaurant.cusines.findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(404, `Please add the category first in which you want to update the
+                    food item of ${restaurant_name}`);
+        }
+
+        const foodIndex = restaurant.cusines[index]["food"].findIndex((item) => item._id.toString() === id.toString());
+        if (foodIndex == -1) {
+            throw new ErrorHandler(404, `Food item with id ${id} not found`);
+        }
+
+        const food = restaurant.cusines[index]["food"][foodIndex];
+
+        res.status(200).json({
+            message: "Food items fetched successfully!",
+            data: food
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
+
+
+
+
+
+export const getAllCusines = ErrorWrapper(async (req, res, next) => {
+    const { id } = req.params;
+    const { restaurant_name, category } = req.query;
+
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(404, `Restaurant with name ${restaurant_name} not found`);
+        }
+        const user = req.user;
+        if (user._id.toString() !== restaurant.owner.toString()) {
+            throw new ErrorHandler(401, "You are not authorized to perform this action");
+        }
+
+        const food = restaurant.cusines;
+
+        res.status(200).json({
+            message: "Food items fetched successfully!",
+            data: food
         })
     } catch (error) {
         throw new ErrorHandler(error.statusCode || 500, error.message);
