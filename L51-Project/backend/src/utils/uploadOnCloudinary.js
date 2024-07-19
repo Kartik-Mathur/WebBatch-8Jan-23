@@ -26,4 +26,23 @@ const uploadOnCloudinary = async (filePath) => {
 
 }
 
+
+async function uploadBatchOnCloudinary(images) {
+    try {
+        const promises = images.map(async (image) => {
+            const response = await cloudinary.uploader.upload(image.path);
+            return response;
+        });
+        const results = await Promise.all(promises);
+        images.map((image) => fs.unlinkSync(image.path));
+        return results;
+    }
+    catch (error) {
+        console.error("Error uploading batch files on cloudinary", error);
+        images.map((image) => fs.unlinkSync(image.path));
+        return error;
+    }
+};
+
 export default uploadOnCloudinary
+export { uploadBatchOnCloudinary }

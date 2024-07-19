@@ -1,7 +1,7 @@
 import Restaurant from "../models/restaurant.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import ErrorWrapper from "../utils/ErrorWrapper.js";
-import uploadOnCloudinary from "../utils/uploadOnCloudinary.js";
+import uploadOnCloudinary, { uploadBatchOnCloudinary } from "../utils/uploadOnCloudinary.js";
 
 export const postRestaurant = ErrorWrapper(async (req, res, next) => {
     const { name, address, contact } = req.body;
@@ -240,7 +240,7 @@ export const postUpdateFoodItem = ErrorWrapper(async (req, res, next) => {
             const { url } = cloudinaryResponse;
             restaurant.cusines[index]["food"][foodIndex].image = url;
         }
-        
+
         await restaurant.save();
         res.status(200).json({
             message: "Food item updated successfully!",
@@ -379,6 +379,66 @@ export const getAllCusines = ErrorWrapper(async (req, res, next) => {
             data: food
         })
     } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
+
+
+
+
+
+
+export const postAddFoodImage = ErrorWrapper(async (req, res, next) => {
+    const { id } = req.params;
+    const { restaurant_name, category } = req.body;
+
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+
+        if (!restaurant) {
+            throw new ErrorHandler(404, `Restaurant with name ${restaurant_name} not found`);
+        }
+        const user = req.user;
+        if (user._id.toString() !== restaurant.owner.toString()) {
+            throw new ErrorHandler(401, "You are not authorized to perform this action");
+        }
+        const index = restaurant.cusines.findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(404, `Food item with name ${category} not found`);
+        }
+
+        const foodIndex = restaurant.cusines[index]["food"].findIndex((item) => item._id.toString() === id.toString());
+        if (foodIndex == -1) {
+            throw new ErrorHandler(404, `Food item with id ${id} not found`);
+        }
+
+        const food = restaurant.cusines[index]["food"][foodIndex];
+        const images = req.files;
+
+        if (images.length == 0) {
+            throw new ErrorHandler(400, "Please provide images to upload");
+        }
+        const imageUrls = [];
+        console.log(images);
+        const cloudinaryResult = await uploadBatchOnCloudinary(images);
+
+        for (let i = 0; i < cloudinaryResult.length; i++) {
+            imageUrls.push({
+                url: cloudinaryResult[i].url
+            });
+        }
+
+        food.images = [...imageUrls, ...food.images];
+
+        await restaurant.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Images uploaded successfully",
+            data: food,
+        });
+    }
+    catch (error) {
         throw new ErrorHandler(error.statusCode || 500, error.message);
     }
 })

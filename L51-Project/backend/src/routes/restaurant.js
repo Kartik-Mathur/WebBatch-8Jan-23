@@ -7,8 +7,10 @@ import {
     getDeleteFoodItem,
     getFoodItems,
     getFoodItem,
-    getAllCusines
+    getAllCusines,
+    postAddFoodImage
 } from "../controllers/restaurant.js";
+
 import upload from "../utils/multer.js";;
 
 const router = express.Router();
@@ -27,7 +29,9 @@ router.get('/get-food-item/:id', getFoodItem);
 router.get('/get-all-cusines', getAllCusines);
 
 // Food -> images
+router.post('/add-food-image/:id', upload.array('images', 6), postAddFoodImage);
 // restaurant->Menu
+
 // reviews
 
 
