@@ -1,6 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import ErrorHandler from "../utils/ErrorHandler.js";
+
 
 const restaurantSchema = new Schema({
     name: {
@@ -35,7 +37,7 @@ const restaurantSchema = new Schema({
             url: "String"
         }
     ],
-    owner: {
+    ownerId: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
@@ -74,7 +76,7 @@ const restaurantSchema = new Schema({
     ],
     reviews: [
         {
-            user: {
+            userId: {
                 type: mongoose.SchemaTypes.ObjectId,
                 ref: 'User'
             },
@@ -84,13 +86,13 @@ const restaurantSchema = new Schema({
             },
             images: [
                 {
-                    imageUrl: String
+                    url: String
                 }
             ],
             message: {
                 type: String
             },
-            name: String
+            username: String
         }
     ]
 }, {
@@ -106,6 +108,30 @@ const restaurantSchema = new Schema({
 //         newCusineCategories.push(cusine.category);
 //     })
 // })
+
+restaurantSchema.methods.getFoodItem = async function (category, id) {
+	const restaurant = this;
+	try {
+        
+        const index = restaurant.cusines.findIndex((cusine) => cusine.category === category);
+
+        if (index == -1) throw new ErrorHandler(404, "This category is not available in this restaurant");
+        
+        const foodIndex = restaurant.cusines[index]["food"].findIndex((food) => food._id.toString() === id.toString());
+
+        if (foodIndex == -1) throw new ErrorHandler(404, "Please provide the correct food_id to add images in food");
+
+		let food = restaurant.cusines[index]['food'][foodIndex];
+		
+		return {
+			foodItem: food,
+			index,
+			foodIndex
+		};
+	} catch (error) {
+		throw new ErrorHandler(error.statusCode || 500, error.message);
+	}
+}
 
 const restaurant = mongoose.model("Restaurant", restaurantSchema);
 export default restaurant;

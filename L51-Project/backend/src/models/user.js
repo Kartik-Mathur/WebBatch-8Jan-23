@@ -50,6 +50,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    cart: [
+        {
+            food: Object,
+            quantity: Number
+        }
+    ],
     refreshToken: {
         type: String
     }
