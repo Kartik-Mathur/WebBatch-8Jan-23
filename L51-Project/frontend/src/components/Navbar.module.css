@@ -1,4 +1,18 @@
 .navbar{
     display: flex;
     justify-content: space-around;
+    border: 1px solid black;
+    height: 40px;
+    align-items: center;
+    background-color: blueviolet;
+}
+
+.nav-item{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-item:link,
+.nav-item:visited{
+    color: black;
 }

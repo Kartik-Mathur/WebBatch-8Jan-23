@@ -13,7 +13,9 @@ import {
     postUpdateReview,
     getDeleteReview,
     getAllReviews,
-    getReview
+    getReview,
+    getRestaurants,
+    getRestaurant
 } from "../controllers/restaurant.js";
 
 import upload from "../utils/multer.js";;
@@ -44,5 +46,7 @@ router.post('/update-review/:reviewId', postUpdateReview);
 router.get('/delete-review/:reviewId', getDeleteReview);
 router.get('/get-all-reviews', getAllReviews);
 router.get('/get-review/:reviewId', getReview);
+router.get('/all', getRestaurants);
+router.get('/:restaurant_id', getRestaurant);
 
 export default router;

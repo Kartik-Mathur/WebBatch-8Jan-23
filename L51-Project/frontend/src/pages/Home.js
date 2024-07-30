@@ -1,25 +1,44 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from '../utils/axios';
+import AllRestaurants from '../components/Restaurants/AllRestaurants';
+import MySpinner from '../components/Spinner';
+import LandingPage from './LandingPage';
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
     const userData = useSelector(state => state.userReducer);
+    const dispatch = useDispatch();
+    const [isRestaurantsFetched, setIsRestaurantsFetched] = useState(false);
     useEffect(() => {
-        async function getRestaurantDetails(){
-            // let {data} = await axios.get('/restaurant/all');
+        async function getRestaurantDetails() {
 
+            try {
+                let { data } = await axios.get('/restaurant/all');
+                dispatch({ type: "SET_RESTAURANTS", payload: data.restaurants });
+                setIsRestaurantsFetched(true);
+            } catch (error) {
+                alert(error);
+            }
         }
 
         getRestaurantDetails();
     }, []);
 
     return (
-        <div>
-            <div>{userData.name}</div>
-            <div>{userData.email}</div>
-            <div>{userData.username}</div>
-            <img src={userData.image} />
-        </div>
+        <>
+            {
+                userData.isLoggedIn && <div>
+                    {!isRestaurantsFetched && <MySpinner />}
+                    {isRestaurantsFetched && <AllRestaurants />}
+                    <Outlet />
+                </div>
+            }
+
+            {!userData.isLoggedIn && <LandingPage />}
+
+
+        </>
     )
 }
 

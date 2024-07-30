@@ -501,8 +501,8 @@ export const postAddReview = ErrorWrapper(async (req, res, next) => {
 
 export const postUpdateReview = ErrorWrapper(async (req, res, next) => {
     const { reviewId } = req.params;
-    const { restaurant_name,rating, message } = req.body;
-    const  userId  = req.user._id;
+    const { restaurant_name, rating, message } = req.body;
+    const userId = req.user._id;
     try {
         const restaurant = await Restaurant.findOne({ name: restaurant_name });
         if (!restaurant) {
@@ -543,7 +543,7 @@ export const postUpdateReview = ErrorWrapper(async (req, res, next) => {
 export const getDeleteReview = ErrorWrapper(async (req, res, next) => {
     const { reviewId } = req.params;
     const { restaurant_name } = req.query;
-    const  userId  = req.user._id;
+    const userId = req.user._id;
 
     try {
         const restaurant = await Restaurant.findOne({ name: restaurant_name });
@@ -628,3 +628,36 @@ export const getReview = ErrorWrapper(async (req, res, next) => {
 })
 
 
+
+
+export const getRestaurants = ErrorWrapper(async (req, res, next) => {
+    try {
+        const restaurants = await Restaurant.find();
+
+        res.status(200).json({
+            success: true,
+            message: "Restaurants fetched successfully",
+            restaurants: restaurants
+        });
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+
+})
+
+
+
+export const getRestaurant = ErrorWrapper(async (req, res, next) => {
+    const { restaurantId } = req.params;
+    try {
+        const restaurants = await Restaurant.find({ _id: restaurant_id });
+
+        res.status(200).json({
+            success: true,
+            message: "Restaurants fetched successfully",
+            restaurant: restaurant
+        });
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})

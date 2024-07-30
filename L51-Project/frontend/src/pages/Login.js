@@ -8,9 +8,12 @@ const Login = () => {
     const passwordRef = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const loginHandler = async () => {
-        const username = emailRef.current.value;
-        const password = passwordRef.current.value;
+        const username = emailRef.current.value.trim();
+        const password = passwordRef.current.value.trim();
+        if (!username) return alert('Please enter username');
+        if (!password) return alert('Please enter password');
 
         try {
             const { data } = await axios.post('login', { username, password });
@@ -25,7 +28,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className='login'>
             <input ref={emailRef} type='text' placeholder='Enter username or email' /> <br />
             <input ref={passwordRef} type='password' placeholder='Enter password' /> <br />
             <button onClick={loginHandler}>Login</button>

@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.active {
+  color: white !important;
+}
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-size: contain;
+}
+
+.restaurant-cover-image {
+  width: 100%;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.restaurantDetails-btn {
+  width: 100%;
+  background-color: blueviolet;
+  color: black;
+  border: 0;
+  height: 20px;
+}
+
+.addtocart-btn:hover{
+  cursor: pointer;
+}
+
+.restaurants-list{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
