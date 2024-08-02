@@ -18,6 +18,14 @@ app.use(express.static('public')); // To store the information that front end mi
 
 app.use(cookieParser());
 app.use('/', userRouter);
+const getUser = (req, res, next) => {
+    const user = req.user;
+    if (!user) {
+        return res.status(401).json({ user: undefined });
+    }
+    return res.status(200).json({ user });
+}
+app.get('/getuser', verifyjwt, getUser);
 
 import restaurantRouter from "../src/routes/restaurant.js";
 import { verifyjwt } from "./middlewares/verifyJWT.js";

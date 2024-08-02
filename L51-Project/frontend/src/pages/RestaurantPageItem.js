@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FoodImageCarousel from "../components/FoodImageCarousel";
 import Styles from "./RestaurantPageItem.module.css";
+import FoodItem from '../components/FoodItem';
 const RestaurantPageItem = ({ restaurant }) => {
     // Show Images
     // Cafe Name
@@ -36,7 +37,7 @@ const RestaurantPageItem = ({ restaurant }) => {
                         {
                             restaurant.cusines.map((item, indx) =>
                                 <div
-                                    className={`${(item.category === cusineCategory) ? "isActive" : ""}  ${Styles['cusines-category-item']}`}
+                                    className={(item.category === cusineCategory) ? `${Styles['active-category']} ${Styles['cusines-category-item']}` : `${Styles['cusines-category-item']}`}
                                     onClick={(ev) => { cusineCategoryHandler(item.category) }}
                                     key={indx}
 
@@ -47,7 +48,13 @@ const RestaurantPageItem = ({ restaurant }) => {
                     </div>
                     <div className={Styles['cusines-food']}>
                         {cusineFood.length > 0 && cusineFood.map((item, indx) => <div className={Styles['cusines']}
-                            key={indx}>{item.name} {item.price}</div>)}
+                            key={indx}>
+                            <FoodItem
+                                food={item}
+                                category={cusineCategory}
+                                restaurantName={restaurant.name}
+                            />
+                        </div>)}
                         {cusineFood.length === 0 && <div className={Styles['cusines']}>No Food under this category</div>}
                     </div>
                 </div>

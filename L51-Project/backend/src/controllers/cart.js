@@ -6,7 +6,7 @@ import ErrorWrapper from '../utils/ErrorWrapper.js';
 export const getAddCart = ErrorWrapper(async (req, res, next) => {
     const { id } = req.params;
     let { restaurant_name, category, quantity } = req.query;
-    quantity = +quantity;
+    quantity = +quantity || 1;
 
     try {
         const restaurant = await Restaurant.findOne({ name: restaurant_name });

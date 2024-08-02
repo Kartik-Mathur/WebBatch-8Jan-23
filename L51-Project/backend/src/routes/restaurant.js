@@ -1,5 +1,13 @@
 import express from "express";
 import {
+    getAddCart,
+    getCartItemDelete,
+    getCartItemIncrease,
+    getCartItemDecrease,
+    getCartItems,
+} from "../controllers/cart.js";
+
+import {
     postRestaurant,
     postCusineCategoryAdd,
     postAddFoodItem,
@@ -47,6 +55,13 @@ router.get('/delete-review/:reviewId', getDeleteReview);
 router.get('/get-all-reviews', getAllReviews);
 router.get('/get-review/:reviewId', getReview);
 router.get('/all', getRestaurants);
+
 router.get('/:restaurantId', getRestaurant);
+
+router.get("/view-cart", getCartItems)
+router.get("/add-cart/:id", getAddCart);
+router.get("/increase-cart/:id", getCartItemIncrease);
+router.get("/decrease-cart/:id", getCartItemDecrease);
+router.get("/delete-cart-item/:id", getCartItemDelete);
 
 export default router;
