@@ -1,0 +1,9 @@
+.carousel-image{
+    height: 80%;
+}
+
+.carousel-text{
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    font-weight: 800;
+}

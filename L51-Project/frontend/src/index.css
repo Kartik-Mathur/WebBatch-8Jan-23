@@ -34,9 +34,13 @@ code {
 .restaurantDetails-btn {
   width: 100%;
   background-color: blueviolet;
-  color: black;
+  color: white;
   border: 0;
-  height: 20px;
+  /* height: 20px; */
+}
+
+.restaurantDetails-btn a:visited{
+  color: white;
 }
 
 .addtocart-btn:hover{

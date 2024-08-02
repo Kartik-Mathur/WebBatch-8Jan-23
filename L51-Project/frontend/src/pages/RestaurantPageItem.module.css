@@ -1,0 +1,33 @@
+.carousel{
+    color: black;
+}
+.cusines{
+    min-height: 600px;
+    display: flex;
+    border: 1px solid black;
+}
+
+
+.cusines .cusines-category{
+    width: 30%;
+}
+
+.cusines .cusines-food{
+    width: 65%;
+}
+.cusines-category-item{
+    text-transform: capitalize;
+    font-size: 24px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.cusines-category-item:hover{
+    cursor: pointer;
+    
+}
+
+.cusines-heading{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 40px;
+}

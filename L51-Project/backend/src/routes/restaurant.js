@@ -47,6 +47,6 @@ router.get('/delete-review/:reviewId', getDeleteReview);
 router.get('/get-all-reviews', getAllReviews);
 router.get('/get-review/:reviewId', getReview);
 router.get('/all', getRestaurants);
-router.get('/:restaurant_id', getRestaurant);
+router.get('/:restaurantId', getRestaurant);
 
 export default router;

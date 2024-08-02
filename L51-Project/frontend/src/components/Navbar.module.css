@@ -5,6 +5,11 @@
     height: 40px;
     align-items: center;
     background-color: blueviolet;
+    /* position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    z-index: 1; */
 }
 
 .nav-item{

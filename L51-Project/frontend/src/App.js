@@ -11,9 +11,8 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='app' element={<Home />}>
-          <Route path=':restaurant_id' element={<RestaurantPage />} />
-        </Route>
+        <Route path='app' element={<Home />} />
+        <Route path='app/:restaurant_id' element={<RestaurantPage />} />
       </Routes>
     </div>
   );

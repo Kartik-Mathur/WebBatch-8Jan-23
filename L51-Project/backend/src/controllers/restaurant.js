@@ -649,8 +649,9 @@ export const getRestaurants = ErrorWrapper(async (req, res, next) => {
 
 export const getRestaurant = ErrorWrapper(async (req, res, next) => {
     const { restaurantId } = req.params;
+    console.log(restaurantId);
     try {
-        const restaurants = await Restaurant.find({ _id: restaurant_id });
+        const restaurant = await Restaurant.find({ _id: restaurantId });
 
         res.status(200).json({
             success: true,
